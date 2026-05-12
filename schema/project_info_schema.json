@@ -1,8 +1,96 @@
 {
-  "project_name": "",
-  "source_repository": "",
-  "programming_language": [],
-  "application_domain": "",
-  "project_version": "",
-  "dataset_version": ""
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project Information Schema",
+  "description": "Schema for reverse-engineered software project metadata",
+
+  "type": "object",
+
+  "properties": {
+
+    "project_name": {
+      "type": "string"
+    },
+
+    "source_repository": {
+      "type": "string",
+      "format": "uri"
+    },
+
+    "project_description": {
+      "type": "string"
+    },
+
+    "application_domain": {
+      "type": "string"
+    },
+
+    "project_type": {
+      "type": "string"
+    },
+
+    "programming_language": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "frameworks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "database": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "architectural_style": {
+      "type": "string"
+    },
+
+    "target_users": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "core_features": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+
+    "project_version": {
+      "type": "string"
+    },
+
+    "dataset_version": {
+      "type": "string"
+    },
+
+    "constructed_date": {
+      "type": "string",
+      "format": "date"
+    },
+
+    "reverse_engineering_strategy": {
+      "type": "string"
+    }
+  },
+
+  "required": [
+    "project_name",
+    "project_description",
+    "application_domain",
+    "project_type",
+    "programming_language",
+    "core_features"
+  ]
 }

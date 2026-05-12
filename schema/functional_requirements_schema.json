@@ -1,17 +1,170 @@
 {
-  "goal_level_requirements": [
-    {
-      "id": "FR-01",
-      "description": "The system shall ...",
-      "source": "README"
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Functional Requirements Schema",
+  "description": "Schema for reverse-engineered functional and non-functional requirements datasets",
+  "type": "object",
+
+  "properties": {
+    "goal_level_requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/goal_requirement"
+      }
+    },
+
+    "interaction_level_requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/interaction_requirement"
+      }
+    },
+
+    "non_functional_requirements": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/non_functional_requirement"
+      }
     }
+  },
+
+  "required": [
+    "goal_level_requirements",
+    "interaction_level_requirements",
+    "non_functional_requirements"
   ],
-  "interaction_level_requirements": [
-    {
-      "id": "FR-01-1",
-      "parent": "FR-01",
-      "description": "The system shall ...",
-      "source": "SourceCode"
+
+  "definitions": {
+
+    "goal_requirement": {
+      "type": "object",
+
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^FR-[0-9]+$"
+        },
+
+        "title": {
+          "type": "string"
+        },
+
+        "description": {
+          "type": "string"
+        },
+
+        "priority": {
+          "type": "string",
+          "enum": [
+            "Low",
+            "Medium",
+            "High",
+            "Critical"
+          ]
+        },
+
+        "source": {
+          "type": "string"
+        }
+      },
+
+      "required": [
+        "id",
+        "title",
+        "description",
+        "priority"
+      ]
+    },
+
+    "interaction_requirement": {
+      "type": "object",
+
+      "properties": {
+
+        "id": {
+          "type": "string",
+          "pattern": "^FR-[0-9]+-[0-9]+$"
+        },
+
+        "parent": {
+          "type": "string",
+          "pattern": "^FR-[0-9]+$"
+        },
+
+        "description": {
+          "type": "string"
+        },
+
+        "type": {
+          "type": "string",
+          "enum": [
+            "Authentication",
+            "Validation",
+            "Persistence",
+            "Audit",
+            "Navigation",
+            "Presentation",
+            "User Interaction",
+            "Business Rule",
+            "Security",
+            "Query",
+            "Computation",
+            "Input Validation"
+          ]
+        }
+      },
+
+      "required": [
+        "id",
+        "parent",
+        "description",
+        "type"
+      ]
+    },
+
+    "non_functional_requirement": {
+
+      "type": "object",
+
+      "properties": {
+
+        "id": {
+          "type": "string",
+          "pattern": "^NFR-[0-9]+$"
+        },
+
+        "category": {
+          "type": "string",
+          "enum": [
+            "Performance",
+            "Security",
+            "Reliability",
+            "Usability",
+            "Maintainability",
+            "Scalability",
+            "Availability"
+          ]
+        },
+
+        "description": {
+          "type": "string"
+        },
+
+        "priority": {
+          "type": "string",
+          "enum": [
+            "Low",
+            "Medium",
+            "High",
+            "Critical"
+          ]
+        }
+      },
+
+      "required": [
+        "id",
+        "category",
+        "description"
+      ]
     }
-  ]
+  }
 }

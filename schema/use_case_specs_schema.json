@@ -1,26 +1,150 @@
 {
-  "use_cases": [
-    {
-      "id": "UC-01",
-      "name": "Withdraw Cash",
-      "primary_actor": "Customer",
-      "preconditions": [],
-      "postconditions": [],
-      "main_flow": [
-        {
-          "id": "MF-01",
-          "actor": "Customer",
-          "action": "Customer enters withdrawal amount."
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Use Case Specifications Schema",
+  "description": "Schema for structured use case specifications",
+
+  "type": "object",
+
+  "properties": {
+
+    "use_cases": {
+
+      "type": "array",
+
+      "items": {
+        "$ref": "#/definitions/use_case"
+      }
+    }
+  },
+
+  "required": [
+    "use_cases"
+  ],
+
+  "definitions": {
+
+    "use_case": {
+
+      "type": "object",
+
+      "properties": {
+
+        "id": {
+          "type": "string",
+          "pattern": "^UC-[0-9]+$"
+        },
+
+        "name": {
+          "type": "string"
+        },
+
+        "primary_actor": {
+          "type": "string"
+        },
+
+        "goal": {
+          "type": "string"
+        },
+
+        "preconditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "postconditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+
+        "main_flow": {
+
+          "type": "array",
+
+          "items": {
+            "$ref": "#/definitions/flow_step"
+          }
+        },
+
+        "alternative_flows": {
+
+          "type": "array",
+
+          "items": {
+            "$ref": "#/definitions/alternative_flow"
+          }
         }
-      ],
-      "alternative_flows": [
-        {
-          "id": "AF-01",
-          "condition": "Insufficient balance",
-          "steps": [],
-          "return_to_step": null
+      },
+
+      "required": [
+        "id",
+        "name",
+        "primary_actor",
+        "goal",
+        "main_flow"
+      ]
+    },
+
+    "flow_step": {
+
+      "type": "object",
+
+      "properties": {
+
+        "id": {
+          "type": "string",
+          "pattern": "^MF-[0-9]+$"
+        },
+
+        "actor": {
+          "type": "string"
+        },
+
+        "action": {
+          "type": "string"
         }
+      },
+
+      "required": [
+        "id",
+        "actor",
+        "action"
+      ]
+    },
+
+    "alternative_flow": {
+
+      "type": "object",
+
+      "properties": {
+
+        "id": {
+          "type": "string",
+          "pattern": "^AF-[0-9]+$"
+        },
+
+        "condition": {
+          "type": "string"
+        },
+
+        "steps": {
+
+          "type": "array",
+
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+
+      "required": [
+        "id",
+        "condition",
+        "steps"
       ]
     }
-  ]
+  }
 }
