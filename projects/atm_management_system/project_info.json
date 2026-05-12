@@ -1,35 +1,36 @@
 {
   "project_name": "ATM Management System",
   "source_repository": "https://github.com/Vaibhav-Pant/ATM-Management-System",
-  "project_description": "A Java Swing based ATM simulation desktop application integrated with MySQL database for banking transactions.",
-  "application_domain": "Banking / ATM Simulation",
+  "project_description": "A Java Swing based desktop ATM simulation system supporting banking operations such as account registration, login, withdrawal, deposit, balance enquiry, mini statement generation, and PIN management.",
+  "application_domain": "Banking / ATM System",
   "project_type": "Desktop GUI Application",
   "programming_language": [
     "Java"
   ],
   "frameworks": [
     "Java Swing",
-    "Java AWT",
+    "AWT",
     "JDBC"
   ],
   "database": [
     "MySQL"
   ],
-  "architectural_style": "Event-Driven GUI Architecture",
+  "architectural_style": "Layered Monolithic Desktop Application",
   "target_users": [
     "Bank Customers"
   ],
   "core_features": [
-    "User Registration",
+    "Account Registration",
     "ATM Login",
     "Cash Withdrawal",
     "Cash Deposit",
-    "Fast Cash",
-    "Balance Enquiry",
+    "Fast Cash Withdrawal",
     "PIN Change",
+    "Balance Enquiry",
     "Mini Statement"
   ],
-  "project_version": "1.0",
-  "dataset_version": "2.1",
-  "constructed_date": "2026-05-12"
+  "project_version": "main",
+  "dataset_version": "v3.0-high-quality",
+  "constructed_date": "2026-05-12",
+  "reverse_engineering_strategy": "Requirements reconstructed from repository structure, GUI workflow, Java source files, SQL schema, and observable interaction logic."
 }
