@@ -1,0 +1,325 @@
+{
+  "use_cases": [
+    {
+      "id": "UC-01",
+      "name": "Customer Login",
+      "primary_actor": "Customer",
+      "goal": "Authenticate customer before ATM operations",
+      "preconditions": [
+        "Customer possesses valid card number and PIN"
+      ],
+      "postconditions": [
+        "Customer session is authenticated"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Customer enters card number"
+        },
+        {
+          "id": "MF-02",
+          "actor": "Customer",
+          "action": "Customer enters PIN"
+        },
+        {
+          "id": "MF-03",
+          "actor": "System",
+          "action": "System validates credentials"
+        },
+        {
+          "id": "MF-04",
+          "actor": "System",
+          "action": "System displays ATM transaction menu"
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "Invalid card number or PIN",
+          "steps": [
+            "System displays authentication error message",
+            "System rejects login attempt"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UC-02",
+      "name": "Withdraw Cash",
+      "primary_actor": "Customer",
+      "goal": "Withdraw money from ATM account",
+      "preconditions": [
+        "Customer is authenticated"
+      ],
+      "postconditions": [
+        "Withdrawal transaction is completed"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Customer selects withdrawal operation"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "System prompts customer for withdrawal amount"
+        },
+        {
+          "id": "MF-03",
+          "actor": "Customer",
+          "action": "Customer enters withdrawal amount"
+        },
+        {
+          "id": "MF-04",
+          "actor": "System",
+          "action": "System validates account balance"
+        },
+        {
+          "id": "MF-05",
+          "actor": "System",
+          "action": "System deducts amount from account balance"
+        },
+        {
+          "id": "MF-06",
+          "actor": "System",
+          "action": "System stores withdrawal transaction"
+        },
+        {
+          "id": "MF-07",
+          "actor": "System",
+          "action": "System displays withdrawal success message"
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "Insufficient account balance",
+          "steps": [
+            "System displays insufficient balance message",
+            "Withdrawal request is cancelled"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UC-02-FC",
+      "name": "Fast Cash Withdrawal",
+      "primary_actor": "Customer",
+      "goal": "Withdraw predefined amount of money quickly from ATM account",
+      "preconditions": [
+        "Customer is authenticated"
+      ],
+      "postconditions": [
+        "Fast cash withdrawal transaction is completed"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Customer selects fast cash withdrawal option"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "System displays predefined fast cash amounts (e.g., 100, 500, 1000, 2000, 5000)"
+        },
+        {
+          "id": "MF-03",
+          "actor": "Customer",
+          "action": "Customer selects a predefined fast cash amount"
+        },
+        {
+          "id": "MF-04",
+          "actor": "System",
+          "action": "System validates account balance against selected amount"
+        },
+        {
+          "id": "MF-05",
+          "actor": "System",
+          "action": "System deducts selected amount from account balance"
+        },
+        {
+          "id": "MF-06",
+          "actor": "System",
+          "action": "System stores fast cash withdrawal transaction"
+        },
+        {
+          "id": "MF-07",
+          "actor": "System",
+          "action": "System displays fast cash withdrawal success message"
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "Insufficient account balance for selected fast cash amount",
+          "steps": [
+            "System displays insufficient balance message",
+            "Fast cash withdrawal request is cancelled"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UC-03",
+      "name": "Deposit Cash",
+      "primary_actor": "Customer",
+      "goal": "Deposit money into ATM account",
+      "preconditions": [
+        "Customer is authenticated"
+      ],
+      "postconditions": [
+        "Deposit transaction is completed"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Customer selects deposit operation"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "System requests deposit amount"
+        },
+        {
+          "id": "MF-03",
+          "actor": "Customer",
+          "action": "Customer enters deposit amount"
+        },
+        {
+          "id": "MF-04",
+          "actor": "System",
+          "action": "System updates account balance"
+        },
+        {
+          "id": "MF-05",
+          "actor": "System",
+          "action": "System stores deposit transaction"
+        },
+        {
+          "id": "MF-06",
+          "actor": "System",
+          "action": "System displays deposit success message"
+        }
+      ],
+      "alternative_flows": []
+    },
+    {
+      "id": "UC-04",
+      "name": "Change PIN",
+      "primary_actor": "Customer",
+      "goal": "Change ATM authentication PIN",
+      "preconditions": [
+        "Customer is authenticated"
+      ],
+      "postconditions": [
+        "PIN is successfully updated"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Customer selects PIN change option"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "System prompts for new PIN"
+        },
+        {
+          "id": "MF-03",
+          "actor": "Customer",
+          "action": "Customer enters new PIN and confirmation PIN"
+        },
+        {
+          "id": "MF-04",
+          "actor": "System",
+          "action": "System validates PIN consistency"
+        },
+        {
+          "id": "MF-05",
+          "actor": "System",
+          "action": "System updates PIN in database"
+        },
+        {
+          "id": "MF-06",
+          "actor": "System",
+          "action": "System displays PIN update success message"
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "PIN values do not match",
+          "steps": [
+            "System displays PIN mismatch error",
+            "PIN update is cancelled"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UC-05",
+      "name": "Balance Enquiry",
+      "primary_actor": "Customer",
+      "goal": "View current account balance",
+      "preconditions": [
+        "Customer is authenticated"
+      ],
+      "postconditions": [
+        "Current account balance is displayed"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Customer selects balance enquiry option"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "System retrieves current account balance"
+        },
+        {
+          "id": "MF-03",
+          "actor": "System",
+          "action": "System displays balance information"
+        }
+      ],
+      "alternative_flows": []
+    },
+    {
+      "id": "UC-06",
+      "name": "View Mini Statement",
+      "primary_actor": "Customer",
+      "goal": "Review recent transactions",
+      "preconditions": [
+        "Customer is authenticated"
+      ],
+      "postconditions": [
+        "Mini statement is displayed"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Customer selects mini statement option"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "System retrieves transaction history"
+        },
+        {
+          "id": "MF-03",
+          "actor": "System",
+          "action": "System displays recent transactions"
+        }
+      ],
+      "alternative_flows": []
+    }
+  ]
+}

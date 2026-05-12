@@ -1,0 +1,179 @@
+{
+  "functional_requirements": [
+    {
+      "id": "FR-02",
+      "description": "ATM Login",
+      "type": "Goal-Level"
+    },
+    {
+      "id": "FR-02-1",
+      "parent": "FR-02",
+      "description": "The system shall validate customer card number and PIN credentials.",
+      "type": "Validation"
+    },
+    {
+      "id": "FR-02-2",
+      "parent": "FR-02",
+      "description": "The system shall reject login attempts with invalid credentials.",
+      "type": "Validation"
+    },
+    {
+      "id": "FR-02-3",
+      "parent": "FR-02",
+      "description": "The system shall display the main transaction menu after successful authentication.",
+      "type": "Presentation"
+    },
+    {
+      "id": "FR-03",
+      "description": "Cash Withdrawal",
+      "type": "Goal-Level"
+    },
+    {
+      "id": "FR-03-1",
+      "parent": "FR-03",
+      "description": "The system shall validate that the withdrawal amount does not exceed the account balance.",
+      "type": "Validation"
+    },
+    {
+      "id": "FR-03-2",
+      "parent": "FR-03",
+      "description": "The system shall deduct the withdrawal amount from the customer's account balance.",
+      "type": "Computation"
+    },
+    {
+      "id": "FR-03-3",
+      "parent": "FR-03",
+      "description": "The system shall persist the withdrawal transaction record in the database.",
+      "type": "Persistence"
+    },
+    {
+      "id": "FR-03-4",
+      "parent": "FR-03",
+      "description": "The system shall display a withdrawal success message to the customer.",
+      "type": "Presentation"
+    },
+    {
+      "id": "FR-04",
+      "description": "Cash Deposit",
+      "type": "Goal-Level"
+    },
+    {
+      "id": "FR-04-1",
+      "parent": "FR-04",
+      "description": "The system shall accept the deposit amount entered by the customer.",
+      "type": "Input"
+    },
+    {
+      "id": "FR-04-2",
+      "parent": "FR-04",
+      "description": "The system shall add the deposit amount to the customer's account balance.",
+      "type": "Computation"
+    },
+    {
+      "id": "FR-04-3",
+      "parent": "FR-04",
+      "description": "The system shall persist the deposit transaction record in the database.",
+      "type": "Persistence"
+    },
+    {
+      "id": "FR-05",
+      "description": "Fast Cash Withdrawal",
+      "type": "Goal-Level"
+    },
+    {
+      "id": "FR-05-1",
+      "parent": "FR-05",
+      "description": "The system shall provide predefined fast cash amount options to the customer.",
+      "type": "Presentation"
+    },
+    {
+      "id": "FR-05-2",
+      "parent": "FR-05",
+      "description": "The system shall reject fast cash withdrawal if balance is insufficient.",
+      "type": "Validation"
+    },
+    {
+      "id": "FR-06",
+      "description": "PIN Change",
+      "type": "Goal-Level"
+    },
+    {
+      "id": "FR-06-1",
+      "parent": "FR-06",
+      "description": "The system shall prompt the customer to enter and confirm a new PIN.",
+      "type": "Presentation"
+    },
+    {
+      "id": "FR-06-2",
+      "parent": "FR-06",
+      "description": "The system shall verify that both PIN entries match.",
+      "type": "Validation"
+    },
+    {
+      "id": "FR-06-3",
+      "parent": "FR-06",
+      "description": "The system shall update the customer PIN in the database.",
+      "type": "Persistence"
+    },
+    {
+      "id": "FR-07",
+      "description": "Balance Enquiry",
+      "type": "Goal-Level"
+    },
+    {
+      "id": "FR-07-1",
+      "parent": "FR-07",
+      "description": "The system shall retrieve current account balance from transaction records.",
+      "type": "Computation"
+    },
+    {
+      "id": "FR-07-2",
+      "parent": "FR-07",
+      "description": "The system shall display current account balance to the customer.",
+      "type": "Presentation"
+    },
+    {
+      "id": "FR-08",
+      "description": "Mini Statement",
+      "type": "Goal-Level"
+    },
+    {
+      "id": "FR-08-1",
+      "parent": "FR-08",
+      "description": "The system shall retrieve recent customer transaction records.",
+      "type": "Query"
+    },
+    {
+      "id": "FR-08-2",
+      "parent": "FR-08",
+      "description": "The system shall display mini statement information including transaction type and amount.",
+      "type": "Presentation"
+    }
+  ],
+  "non_functional_requirements": [
+    {
+      "id": "NFR-01",
+      "category": "Usability",
+      "description": "The system shall provide a GUI similar to a real ATM machine.",
+      "priority": "Medium"
+    },
+    {
+      "id": "NFR-02",
+      "category": "Performance",
+      "description": "The system shall respond to customer operations within acceptable desktop application response time.",
+      "priority": "Medium"
+    },
+    {
+      "id": "NFR-03",
+      "category": "Security",
+      "description": "The system shall restrict banking operations to authenticated users only.",
+      "priority": "High"
+    },
+    {
+      "id": "NFR-04",
+      "category": "Reliability",
+      "description": "The system shall persist transaction data using MySQL database storage.",
+      "priority": "High"
+    }
+  ]
+}

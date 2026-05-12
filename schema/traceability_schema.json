@@ -1,0 +1,15 @@
+{
+  "relations": [
+    {
+      "type": "goal_to_use_case",
+      "requirement": "FR-01",
+      "use_case": "UC-01"
+    },
+    {
+      "type": "requirement_to_main_flow",
+      "requirement": "FR-01-1",
+      "use_case": "UC-01",
+      "step": "MF-01"
+    }
+  ]
+}

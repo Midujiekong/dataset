@@ -1,0 +1,17 @@
+{
+  "goal_level_requirements": [
+    {
+      "id": "FR-01",
+      "description": "The system shall ...",
+      "source": "README"
+    }
+  ],
+  "interaction_level_requirements": [
+    {
+      "id": "FR-01-1",
+      "parent": "FR-01",
+      "description": "The system shall ...",
+      "source": "SourceCode"
+    }
+  ]
+}

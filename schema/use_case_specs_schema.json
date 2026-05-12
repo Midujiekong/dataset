@@ -1,0 +1,26 @@
+{
+  "use_cases": [
+    {
+      "id": "UC-01",
+      "name": "Withdraw Cash",
+      "primary_actor": "Customer",
+      "preconditions": [],
+      "postconditions": [],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Customer enters withdrawal amount."
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "Insufficient balance",
+          "steps": [],
+          "return_to_step": null
+        }
+      ]
+    }
+  ]
+}
