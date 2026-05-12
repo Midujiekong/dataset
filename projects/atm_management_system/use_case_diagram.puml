@@ -1,25 +1,17 @@
 @startuml
-
 left to right direction
-skinparam packageStyle rectangle
 
 actor Customer
 
-rectangle "ATM Management System" {
-
-    usecase "Register Account" as UC1
-    usecase "Login" as UC2
-    usecase "Withdraw Cash" as UC3
-    usecase "Deposit Cash" as UC4
-    usecase "Fast Cash" as UC5
-    usecase "Balance Enquiry" as UC6
-    usecase "Mini Statement" as UC7
-    usecase "Change PIN" as UC8
-
-    usecase "Authenticate User" as AUTH
-    usecase "Validate Balance" as BAL
-    usecase "Update Balance" as UPD
-    usecase "Store Transaction" as TXN
+rectangle ATM_System {
+  usecase "Register Account" as UC1
+  usecase "Login" as UC2
+  usecase "Withdraw Cash" as UC3
+  usecase "Deposit Cash" as UC4
+  usecase "Balance Enquiry" as UC5
+  usecase "Mini Statement" as UC6
+  usecase "Change PIN" as UC7
+  usecase "Fast Cash" as UC8
 }
 
 Customer --> UC1
@@ -31,24 +23,11 @@ Customer --> UC6
 Customer --> UC7
 Customer --> UC8
 
-UC3 .> AUTH : <<include>>
-UC4 .> AUTH : <<include>>
-UC5 .> AUTH : <<include>>
-UC6 .> AUTH : <<include>>
-UC7 .> AUTH : <<include>>
-UC8 .> AUTH : <<include>>
-
-UC3 .> BAL : <<include>>
-UC5 .> BAL : <<include>>
-
-UC3 .> UPD : <<include>>
-UC4 .> UPD : <<include>>
-UC5 .> UPD : <<include>>
-
-UC3 .> TXN : <<include>>
-UC4 .> TXN : <<include>>
-UC5 .> TXN : <<include>>
-
-UC5 .> UC3 : <<extend>>
+UC3 .> UC2 : <<include>>
+UC4 .> UC2 : <<include>>
+UC5 .> UC2 : <<include>>
+UC6 .> UC2 : <<include>>
+UC7 .> UC2 : <<include>>
+UC8 .> UC2 : <<include>>
 
 @enduml
