@@ -1,36 +1,24 @@
 {
-  "project_name": "ATM Management System",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "project_name": "ATM-Management-System",
   "source_repository": "https://github.com/Vaibhav-Pant/ATM-Management-System",
-  "project_description": "A Java Swing based ATM simulation desktop application integrated with MySQL database for banking transactions.",
-  "application_domain": "Banking / ATM Simulation",
-  "project_type": "Desktop GUI Application",
-  "programming_language": [
-    "Java"
-  ],
-  "frameworks": [
-    "Java Swing",
-    "Java AWT",
-    "JDBC"
-  ],
-  "database": [
-    "MySQL"
-  ],
-  "architectural_style": "Event-Driven GUI Architecture",
-  "target_users": [
-    "Bank Customers"
-  ],
+  "project_description": "A Java-based console ATM management system that implements core banking functionalities including cash withdrawal, cash deposit, balance inquiry, PIN modification, and mini statement generation for bank customers.",
+  "application_domain": "Banking/Financial Services",
+  "project_type": "Console Application",
+  "programming_language": ["Java"],
+  "frameworks": [],
+  "database": [],
+  "architectural_style": "Monolithic",
+  "target_users": ["Bank Customer"],
   "core_features": [
-    "User Registration",
-    "ATM Login",
     "Cash Withdrawal",
     "Cash Deposit",
-    "Fast Cash",
-    "Balance Enquiry",
+    "Balance Inquiry",
     "PIN Change",
-    "Mini Statement"
+    "Mini Statement Generation"
   ],
   "project_version": "1.0",
   "dataset_version": "2.1",
-  "constructed_date": "2026-05-12",
-  "reverse_engineering_strategy": "Behavior-driven reverse engineering using GUI interactions, source code structure, database operations, and transaction workflows."
+  "constructed_date": "2024-05-20",
+  "reverse_engineering_strategy": "Source Code Analysis + Functional Behavior Extraction"
 }

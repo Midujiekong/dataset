@@ -1,33 +1,30 @@
-@startuml
+@startuml ATM Use Case Diagram
 left to right direction
+actor "Customer" as C
 
-actor Customer
-
-rectangle ATM_System {
-  usecase "Register Account" as UC1
-  usecase "Login" as UC2
-  usecase "Withdraw Cash" as UC3
-  usecase "Deposit Cash" as UC4
-  usecase "Balance Enquiry" as UC5
-  usecase "Mini Statement" as UC6
-  usecase "Change PIN" as UC7
-  usecase "Fast Cash" as UC8
+rectangle "ATM System" {
+  (Withdraw Cash) : UC-01
+  (Deposit Cash) : UC-02
+  (Check Balance) : UC-03
+  (Change PIN) : UC-04
+  (Generate Mini Statement) : UC-05
+  (Verify PIN) : UC-00 <<include>>
 }
 
-Customer --> UC1
-Customer --> UC2
-Customer --> UC3
-Customer --> UC4
-Customer --> UC5
-Customer --> UC6
-Customer --> UC7
-Customer --> UC8
+C -- (Withdraw Cash)
+C -- (Deposit Cash)
+C -- (Check Balance)
+C -- (Change PIN)
+C -- (Generate Mini Statement)
 
-UC3 .> UC2 : <<include>>
-UC4 .> UC2 : <<include>>
-UC5 .> UC2 : <<include>>
-UC6 .> UC2 : <<include>>
-UC7 .> UC2 : <<include>>
-UC8 .> UC2 : <<include>>
+(Withdraw Cash) -[dashed]-> (Verify PIN) : <<include>>
+(Deposit Cash) -[dashed]-> (Verify PIN) : <<include>>
+(Check Balance) -[dashed]-> (Verify PIN) : <<include>>
+(Change PIN) -[dashed]-> (Verify PIN) : <<include>>
+(Generate Mini Statement) -[dashed]-> (Verify PIN) : <<include>>
 
+note right of (Verify PIN)
+  Validates customer PIN before processing
+  any transaction (NFR-02: 3 failed attempts = account lock)
+end note
 @enduml

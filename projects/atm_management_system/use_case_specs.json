@@ -1,71 +1,381 @@
 {
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "use_cases": [
     {
       "id": "UC-01",
-      "name": "Register Account",
-      "primary_actor": "Customer",
-      "goal": "Create a new ATM account"
-    },
-    {
-      "id": "UC-02",
-      "name": "Login",
-      "primary_actor": "Customer",
-      "goal": "Authenticate using card number and PIN"
-    },
-    {
-      "id": "UC-03",
       "name": "Withdraw Cash",
       "primary_actor": "Customer",
-      "goal": "Withdraw money from ATM account",
+      "goal": "To withdraw a specified amount of cash from the customer's account",
       "preconditions": [
-        "Customer is authenticated",
-        "ATM system is connected to database"
+        "Customer's ATM card is inserted and recognized",
+        "Customer's account is not locked",
+        "Account balance is greater than or equal to the withdrawal amount"
       ],
       "postconditions": [
-        "Account balance is updated",
-        "Transaction is stored"
+        "Withdrawal amount is deducted from the customer's account balance",
+        "Transaction is recorded in the customer's transaction history",
+        "Cash is dispensed to the customer"
       ],
       "main_flow": [
         {
-          "id": "MF-1",
+          "id": "MF-01",
           "actor": "Customer",
-          "action": "Select Withdraw option"
+          "action": "Enters PIN and selects 'Withdraw Cash' option"
         },
         {
-          "id": "MF-2",
+          "id": "MF-02",
           "actor": "System",
-          "action": "Prompt for withdrawal amount"
+          "action": "Validates the entered PIN against the stored PIN"
         },
         {
-          "id": "MF-3",
+          "id": "MF-03",
           "actor": "Customer",
-          "action": "Enter amount"
+          "action": "Enters the desired withdrawal amount"
         },
         {
-          "id": "MF-4",
+          "id": "MF-04",
           "actor": "System",
-          "action": "Validate account balance"
+          "action": "Checks if account balance is sufficient for the requested amount"
         },
         {
-          "id": "MF-5",
+          "id": "MF-05",
           "actor": "System",
-          "action": "Deduct amount and store transaction"
+          "action": "Deducts the withdrawal amount from the account balance"
         },
         {
-          "id": "MF-6",
+          "id": "MF-06",
           "actor": "System",
-          "action": "Display success message"
+          "action": "Records the withdrawal transaction in the transaction history"
+        },
+        {
+          "id": "MF-07",
+          "actor": "System",
+          "action": "Dispenses the requested cash amount to the customer"
+        },
+        {
+          "id": "MF-08",
+          "actor": "System",
+          "action": "Displays transaction success message to the customer"
         }
       ],
       "alternative_flows": [
         {
-          "id": "AF-1",
-          "condition": "Insufficient balance",
+          "id": "AF-01",
+          "condition": "PIN entered is incorrect (1st attempt)",
           "steps": [
-            {
-              "actor": "System",
-              "action": "Display insufficient balance error"
-            }
+            "System displays 'Incorrect PIN' message",
+            "System prompts customer to re-enter PIN (MF-01 return_to_step)",
+            "System increments incorrect PIN attempt counter"
+          ]
+        },
+        {
+          "id": "AF-02",
+          "condition": "PIN entered is incorrect (3rd attempt)",
+          "steps": [
+            "System displays 'Account Locked' message",
+            "System locks the customer's account",
+            "System terminates the transaction",
+            "Postcondition: Customer's account is locked"
+          ]
+        },
+        {
+          "id": "AF-03",
+          "condition": "Account balance is insufficient for withdrawal amount",
+          "steps": [
+            "System displays 'Insufficient Balance' message",
+            "System prompts customer to enter a lower amount (MF-03 return_to_step) or cancel transaction",
+            "If customer cancels, system terminates transaction"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UC-02",
+      "name": "Deposit Cash",
+      "primary_actor": "Customer",
+      "goal": "To deposit a specified amount of cash into the customer's account",
+      "preconditions": [
+        "Customer's ATM card is inserted and recognized",
+        "Customer's account is not locked"
+      ],
+      "postconditions": [
+        "Deposit amount is added to the customer's account balance",
+        "Transaction is recorded in the customer's transaction history"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Enters PIN and selects 'Deposit Cash' option"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "Validates the entered PIN against the stored PIN"
+        },
+        {
+          "id": "MF-03",
+          "actor": "Customer",
+          "action": "Enters the deposit amount and inserts cash into the cash slot"
+        },
+        {
+          "id": "MF-04",
+          "actor": "System",
+          "action": "Verifies the deposit amount is a positive value"
+        },
+        {
+          "id": "MF-05",
+          "actor": "System",
+          "action": "Adds the deposit amount to the account balance"
+        },
+        {
+          "id": "MF-06",
+          "actor": "System",
+          "action": "Records the deposit transaction in the transaction history"
+        },
+        {
+          "id": "MF-07",
+          "actor": "System",
+          "action": "Displays deposit success message and updated balance to the customer"
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "PIN entered is incorrect (1st/2nd attempt)",
+          "steps": [
+            "System displays 'Incorrect PIN' message",
+            "System prompts customer to re-enter PIN (MF-01 return_to_step)",
+            "System increments incorrect PIN attempt counter"
+          ]
+        },
+        {
+          "id": "AF-02",
+          "condition": "PIN entered is incorrect (3rd attempt)",
+          "steps": [
+            "System displays 'Account Locked' message",
+            "System locks the customer's account",
+            "System terminates the transaction"
+          ]
+        },
+        {
+          "id": "AF-03",
+          "condition": "Deposit amount is zero or negative",
+          "steps": [
+            "System displays 'Invalid Amount' message",
+            "System prompts customer to enter a valid positive amount (MF-03 return_to_step) or cancel transaction"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UC-03",
+      "name": "Check Balance",
+      "primary_actor": "Customer",
+      "goal": "To view the current balance of the customer's account",
+      "preconditions": [
+        "Customer's ATM card is inserted and recognized",
+        "Customer's account is not locked"
+      ],
+      "postconditions": [
+        "Customer's account balance is displayed",
+        "Balance inquiry transaction is recorded (optional)"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Enters PIN and selects 'Check Balance' option"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "Validates the entered PIN against the stored PIN"
+        },
+        {
+          "id": "MF-03",
+          "actor": "System",
+          "action": "Retrieves the current account balance from the system"
+        },
+        {
+          "id": "MF-04",
+          "actor": "System",
+          "action": "Displays the current account balance to the customer"
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "PIN entered is incorrect (1st/2nd attempt)",
+          "steps": [
+            "System displays 'Incorrect PIN' message",
+            "System prompts customer to re-enter PIN (MF-01 return_to_step)",
+            "System increments incorrect PIN attempt counter"
+          ]
+        },
+        {
+          "id": "AF-02",
+          "condition": "PIN entered is incorrect (3rd attempt)",
+          "steps": [
+            "System displays 'Account Locked' message",
+            "System locks the customer's account",
+            "System terminates the transaction"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UC-04",
+      "name": "Change PIN",
+      "primary_actor": "Customer",
+      "goal": "To update the PIN of the customer's account",
+      "preconditions": [
+        "Customer's ATM card is inserted and recognized",
+        "Customer's account is not locked"
+      ],
+      "postconditions": [
+        "Customer's PIN is updated to the new value",
+        "PIN change transaction is recorded in the transaction history"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Enters current PIN and selects 'Change PIN' option"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "Validates the current PIN against the stored PIN"
+        },
+        {
+          "id": "MF-03",
+          "actor": "Customer",
+          "action": "Enters new 4-digit PIN"
+        },
+        {
+          "id": "MF-04",
+          "actor": "Customer",
+          "action": "Re-enters new PIN for confirmation"
+        },
+        {
+          "id": "MF-05",
+          "actor": "System",
+          "action": "Verifies new PIN and confirmed PIN match"
+        },
+        {
+          "id": "MF-06",
+          "actor": "System",
+          "action": "Updates the stored PIN to the new value"
+        },
+        {
+          "id": "MF-07",
+          "actor": "System",
+          "action": "Displays 'PIN Changed Successfully' message to the customer"
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "Current PIN entered is incorrect (1st/2nd attempt)",
+          "steps": [
+            "System displays 'Incorrect Current PIN' message",
+            "System prompts customer to re-enter current PIN (MF-01 return_to_step)",
+            "System increments incorrect PIN attempt counter"
+          ]
+        },
+        {
+          "id": "AF-02",
+          "condition": "Current PIN entered is incorrect (3rd attempt)",
+          "steps": [
+            "System displays 'Account Locked' message",
+            "System locks the customer's account",
+            "System terminates the transaction"
+          ]
+        },
+        {
+          "id": "AF-03",
+          "condition": "New PIN and confirmed PIN do not match",
+          "steps": [
+            "System displays 'PIN Mismatch' message",
+            "System prompts customer to re-enter new PIN (MF-03 return_to_step)"
+          ]
+        },
+        {
+          "id": "AF-04",
+          "condition": "New PIN is not 4 digits",
+          "steps": [
+            "System displays 'Invalid PIN Format' message",
+            "System prompts customer to enter a 4-digit PIN (MF-03 return_to_step)"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "UC-05",
+      "name": "Generate Mini Statement",
+      "primary_actor": "Customer",
+      "goal": "To view a mini statement of recent transactions for the customer's account",
+      "preconditions": [
+        "Customer's ATM card is inserted and recognized",
+        "Customer's account is not locked",
+        "Customer has at least one transaction in history"
+      ],
+      "postconditions": [
+        "Mini statement (recent 5 transactions) is displayed to the customer"
+      ],
+      "main_flow": [
+        {
+          "id": "MF-01",
+          "actor": "Customer",
+          "action": "Enters PIN and selects 'Mini Statement' option"
+        },
+        {
+          "id": "MF-02",
+          "actor": "System",
+          "action": "Validates the entered PIN against the stored PIN"
+        },
+        {
+          "id": "MF-03",
+          "actor": "System",
+          "action": "Retrieves the most recent 5 transactions from the customer's transaction history"
+        },
+        {
+          "id": "MF-04",
+          "actor": "System",
+          "action": "Formats the transactions (type, amount, date/time) into a mini statement"
+        },
+        {
+          "id": "MF-05",
+          "actor": "System",
+          "action": "Displays the mini statement to the customer"
+        }
+      ],
+      "alternative_flows": [
+        {
+          "id": "AF-01",
+          "condition": "PIN entered is incorrect (1st/2nd attempt)",
+          "steps": [
+            "System displays 'Incorrect PIN' message",
+            "System prompts customer to re-enter PIN (MF-01 return_to_step)",
+            "System increments incorrect PIN attempt counter"
+          ]
+        },
+        {
+          "id": "AF-02",
+          "condition": "PIN entered is incorrect (3rd attempt)",
+          "steps": [
+            "System displays 'Account Locked' message",
+            "System locks the customer's account",
+            "System terminates the transaction"
+          ]
+        },
+        {
+          "id": "AF-03",
+          "condition": "No transactions in customer's history",
+          "steps": [
+            "System displays 'No Transaction History Found' message",
+            "System terminates the transaction"
           ]
         }
       ]
