@@ -1,0 +1,100 @@
+{
+  "$schema": "../schema/functional_requirements_schema.json",
+  "goal_level_requirements": [
+    {
+      "id": "FR-01",
+      "title": "Manage User Authentication",
+      "description": "The system shall allow users to register and login with role-based access (ADMIN/CUSTOMER).",
+      "priority": "Critical",
+      "source": "README.md (Authentication section), SourceCode (AuthController.java)"
+    },
+    {
+      "id": "FR-02",
+      "title": "Manage Book Catalog",
+      "description": "The system shall allow ADMIN to manage books and all users to browse/search books.",
+      "priority": "High",
+      "source": "README.md (Book endpoints), SourceCode (BookController.java)"
+    },
+    {
+      "id": "FR-03",
+      "title": "Manage Shopping Cart",
+      "description": "The system shall allow CUSTOMER to add/view books in their cart.",
+      "priority": "High",
+      "source": "README.md (Cart endpoints), SourceCode (CartController.java)"
+    },
+    {
+      "id": "FR-04",
+      "title": "Process Customer Orders",
+      "description": "The system shall allow CUSTOMER to checkout cart and view order history.",
+      "priority": "Critical",
+      "source": "README.md (Order endpoints), SourceCode (OrderController.java)"
+    }
+  ],
+  "interaction_level_requirements": [
+    {
+      "id": "FR-01-1",
+      "parent": "FR-01",
+      "description": "The system shall validate login credentials and issue JWT token on success.",
+      "type": "Authentication",
+      "source": "SourceCode (AuthController.java, JwtService.java)"
+    },
+    {
+      "id": "FR-01-2",
+      "parent": "FR-01",
+      "description": "The system shall restrict ADMIN-only endpoints to users with ADMIN role.",
+      "type": "Security",
+      "source": "SourceCode (SecurityConfig.java, @PreAuthorize)"
+    },
+    {
+      "id": "FR-02-1",
+      "parent": "FR-02",
+      "description": "The system shall support filtering books by category and bookType (physical/digital).",
+      "type": "Query",
+      "source": "README.md (GET /books params), SourceCode (BookRepository.java)"
+    },
+    {
+      "id": "FR-02-2",
+      "parent": "FR-02",
+      "description": "The system shall allow searching books by keyword with pagination.",
+      "type": "Query",
+      "source": "README.md (GET /books/search), SourceCode (BookController.java)"
+    },
+    {
+      "id": "FR-03-1",
+      "parent": "FR-03",
+      "description": "The system shall associate cart with a specific CUSTOMER ID.",
+      "type": "Persistence",
+      "source": "README.md (/cart/add params), SourceCode (Cart.java, CartService.java)"
+    },
+    {
+      "id": "FR-04-1",
+      "parent": "FR-04",
+      "description": "The system shall calculate total price from cart books during checkout.",
+      "type": "Computation",
+      "source": "README.md (/orders/checkout), SourceCode (OrderService.java)"
+    }
+  ],
+  "non_functional_requirements": [
+    {
+      "id": "NFR-01",
+      "category": "Security",
+      "description": "The system shall use JWT for stateless authentication and role-based authorization.",
+      "priority": "Critical",
+      "source": "README.md (Authentication), SourceCode (JwtConfig.java)"
+    },
+    {
+      "id": "NFR-02",
+      "category": "Usability",
+      "description": "The system shall provide RESTful API endpoints with clear request/response formats.",
+      "priority": "Medium",
+      "source": "README.md (API examples)"
+    },
+    {
+      "id": "NFR-03",
+      "category": "Reliability",
+      "description": "The system shall use in-memory H2 database for easy testing and reset on restart.",
+      "priority": "Low",
+      "source": "application.properties, README.md (H2 console)"
+    }
+  ]
+}

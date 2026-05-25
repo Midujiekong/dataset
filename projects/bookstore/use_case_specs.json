@@ -1,0 +1,168 @@
+{
+  "$schema": "../schema/use_case_specs_schema.json",
+  "use_cases": [
+    {
+      "id": "UC-01",
+      "name": "Register User",
+      "primary_actor": "CUSTOMER/ADMIN",
+      "goal": "Create a new user account with login, password, and role",
+      "preconditions": ["System is running", "No existing user with the same login"],
+      "postconditions": ["User account is saved in database", "User can login with credentials"],
+      "main_flow": [
+        {"id":"MF-01","actor":"Actor","action":"Sends POST /register request with login, password, role"},
+        {"id":"MF-02","actor":"System","action":"Validates request data (non-empty fields, valid role)"},
+        {"id":"MF-03","actor":"System","action":"Encrypts password and saves user to database"},
+        {"id":"MF-04","actor":"System","action":"Returns success response with user details"}
+      ],
+      "alternative_flows": [
+        {"id":"AF-01","condition":"Login already exists","steps":["MF-02: System detects duplicate login","System returns 409 error","Use case ends"]},
+        {"id":"AF-02","condition":"Invalid role provided","steps":["MF-02: System detects invalid role","System returns 400 error","Use case ends"]}
+      ]
+    },
+    {
+      "id": "UC-02",
+      "name": "Login & Get JWT",
+      "primary_actor": "CUSTOMER/ADMIN",
+      "goal": "Authenticate user and receive JWT token for authorized requests",
+      "preconditions": ["User account exists in database"],
+      "postconditions": ["User is authenticated", "JWT token is issued"],
+      "main_flow": [
+        {"id":"MF-01","actor":"Actor","action":"Sends POST /login request with login and password"},
+        {"id":"MF-02","actor":"System","action":"Validates credentials against database"},
+        {"id":"MF-03","actor":"System","action":"Generates JWT token with user role"},
+        {"id":"MF-04","actor":"System","action":"Returns JWT token in response"}
+      ],
+      "alternative_flows": [
+        {"id":"AF-01","condition":"Invalid credentials","steps":["MF-02: System detects mismatch","System returns 401 error","Use case ends"]}
+      ]
+    },
+    {
+      "id": "UC-03",
+      "name": "Manage Books",
+      "primary_actor": "ADMIN",
+      "goal": "Create, update, or delete books in the catalog",
+      "preconditions": ["ADMIN is authenticated with valid JWT"],
+      "postconditions": ["Book catalog is updated"],
+      "main_flow": [
+        {"id":"MF-01","actor":"ADMIN","action":"Sends POST/PUT/DELETE /books request with JWT and book data"},
+        {"id":"MF-02","actor":"System","action":"Validates JWT and ADMIN role"},
+        {"id":"MF-03","actor":"System","action":"Performs CRUD operation on Book entity"},
+        {"id":"MF-04","actor":"System","action":"Returns success response with updated book data"}
+      ],
+      "alternative_flows": [
+        {"id":"AF-01","condition":"Non-ADMIN user attempts access","steps":["MF-02: System rejects role","System returns 403 error","Use case ends"]},
+        {"id":"AF-02","condition":"Book ID not found (PUT/DELETE)","steps":["MF-03: System detects missing book","System returns 404 error","Use case ends"]}
+      ]
+    },
+    {
+      "id": "UC-04",
+      "name": "Browse Books",
+      "primary_actor": "CUSTOMER/ADMIN",
+      "goal": "View paginated list of all books with optional filters",
+      "preconditions": ["User is authenticated with valid JWT"],
+      "postconditions": ["Book list is displayed to user"],
+      "main_flow": [
+        {"id":"MF-01","actor":"Actor","action":"Sends GET /books request with JWT and optional filter params"},
+        {"id":"MF-02","actor":"System","action":"Validates JWT"},
+        {"id":"MF-03","actor":"System","action":"Queries database for books with pagination/filters"},
+        {"id":"MF-04","actor":"System","action":"Returns paginated book list"}
+      ],
+      "alternative_flows": []
+    },
+    {
+      "id": "UC-05",
+      "name": "Search Books",
+      "primary_actor": "CUSTOMER/ADMIN",
+      "goal": "Find books by keyword (name/description) with pagination",
+      "preconditions": ["User is authenticated with valid JWT"],
+      "postconditions": ["Matching books are displayed"],
+      "main_flow": [
+        {"id":"MF-01","actor":"Actor","action":"Sends GET /books/search request with JWT, query, and page params"},
+        {"id":"MF-02","actor":"System","action":"Validates JWT"},
+        {"id":"MF-03","actor":"System","action":"Searches database for books matching keyword"},
+        {"id":"MF-04","actor":"System","action":"Returns paginated search results"}
+      ],
+      "alternative_flows": []
+    },
+    {
+      "id": "UC-06",
+      "name": "View Book Details",
+      "primary_actor": "CUSTOMER/ADMIN",
+      "goal": "View full details of a single book by ID",
+      "preconditions": ["User is authenticated with valid JWT"],
+      "postconditions": ["Book details are displayed"],
+      "main_flow": [
+        {"id":"MF-01","actor":"Actor","action":"Sends GET /books/{id} request with JWT"},
+        {"id":"MF-02","actor":"System","action":"Validates JWT and queries book by ID"},
+        {"id":"MF-03","actor":"System","action":"Returns book details"}
+      ],
+      "alternative_flows": [
+        {"id":"AF-01","condition":"Book ID not found","steps":["MF-02: System detects missing book","System returns 404 error","Use case ends"]}
+      ]
+    },
+    {
+      "id": "UC-07",
+      "name": "Add Book to Cart",
+      "primary_actor": "CUSTOMER",
+      "goal": "Add a specific book to the customer's cart",
+      "preconditions": ["CUSTOMER is authenticated with valid JWT", "Book exists in catalog"],
+      "postconditions": ["Book is added to customer's cart"],
+      "main_flow": [
+        {"id":"MF-01","actor":"CUSTOMER","action":"Sends POST /cart/add/{bookId} request with JWT and customerId"},
+        {"id":"MF-02","actor":"System","action":"Validates JWT, customerId, and bookId"},
+        {"id":"MF-03","actor":"System","action":"Adds book to cart (creates cart if not exists)"},
+        {"id":"MF-04","actor":"System","action":"Returns updated cart details"}
+      ],
+      "alternative_flows": [
+        {"id":"AF-01","condition":"Book ID not found","steps":["MF-02: System detects missing book","System returns 404 error","Use case ends"]}
+      ]
+    },
+    {
+      "id": "UC-08",
+      "name": "View Cart",
+      "primary_actor": "CUSTOMER",
+      "goal": "View all books in the customer's cart",
+      "preconditions": ["CUSTOMER is authenticated with valid JWT"],
+      "postconditions": ["Cart contents are displayed"],
+      "main_flow": [
+        {"id":"MF-01","actor":"CUSTOMER","action":"Sends GET /cart request with JWT and customerId"},
+        {"id":"MF-02","actor":"System","action":"Validates JWT and retrieves cart by customerId"},
+        {"id":"MF-03","actor":"System","action":"Returns cart details with books"}
+      ],
+      "alternative_flows": []
+    },
+    {
+      "id": "UC-09",
+      "name": "Checkout Cart",
+      "primary_actor": "CUSTOMER",
+      "goal": "Create a new order from the customer's cart",
+      "preconditions": ["CUSTOMER is authenticated with valid JWT", "Cart has at least one book"],
+      "postconditions": ["Order is created", "Cart is cleared"],
+      "main_flow": [
+        {"id":"MF-01","actor":"CUSTOMER","action":"Sends POST /orders/checkout request with JWT and customerId"},
+        {"id":"MF-02","actor":"System","action":"Validates JWT and retrieves cart by customerId"},
+        {"id":"MF-03","actor":"System","action":"Calculates total price from cart books"},
+        {"id":"MF-04","actor":"System","action":"Creates new Order entity with status COMPLETED"},
+        {"id":"MF-05","actor":"System","action":"Clears the customer's cart"},
+        {"id":"MF-06","actor":"System","action":"Returns created order details"}
+      ],
+      "alternative_flows": [
+        {"id":"AF-01","condition":"Cart is empty","steps":["MF-02: System detects empty cart","System returns 400 error","Use case ends"]}
+      ]
+    },
+    {
+      "id": "UC-10",
+      "name": "View Order History",
+      "primary_actor": "CUSTOMER",
+      "goal": "View all past orders for the customer",
+      "preconditions": ["CUSTOMER is authenticated with valid JWT"],
+      "postconditions": ["Order history is displayed"],
+      "main_flow": [
+        {"id":"MF-01","actor":"CUSTOMER","action":"Sends GET /orders request with JWT and customerId"},
+        {"id":"MF-02","actor":"System","action":"Validates JWT and queries orders by customerId"},
+        {"id":"MF-03","actor":"System","action":"Returns list of orders with books and total price"}
+      ],
+      "alternative_flows": []
+    }
+  ]
+}

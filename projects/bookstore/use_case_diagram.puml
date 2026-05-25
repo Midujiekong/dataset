@@ -1,0 +1,44 @@
+@startuml BookStore Use Case Diagram
+' 参与者（来自仓库角色定义）
+actor "CUSTOMER" as C
+actor "ADMIN" as A
+
+' 系统边界
+package "BookStore System" {
+  ' 用例（10个，全部来自仓库API/功能）
+  (UC01: Register User) as UC01
+  (UC02: Login & Get JWT) as UC02
+  (UC03: Manage Books) as UC03
+  (UC04: Browse Books) as UC04
+  (UC05: Search Books) as UC05
+  (UC06: View Book Details) as UC06
+  (UC07: Add Book to Cart) as UC07
+  (UC08: View Cart) as UC08
+  (UC09: Checkout Cart) as UC09
+  (UC10: View Order History) as UC10
+
+  ' 关系（符合include/extend规则）
+  UC03 <<include>> UC02
+  UC04 <<include>> UC02
+  UC07 <<include>> UC02
+  UC09 <<include>> UC02
+}
+
+' 参与者关联（严格按仓库权限）
+C -- UC01
+C -- UC02
+C -- UC04
+C -- UC05
+C -- UC06
+C -- UC07
+C -- UC08
+C -- UC09
+C -- UC10
+
+A -- UC01
+A -- UC02
+A -- UC03
+A -- UC04
+A -- UC05
+A -- UC06
+@enduml

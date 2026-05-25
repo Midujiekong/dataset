@@ -1,0 +1,21 @@
+{
+  "$schema": "../schema/traceability_schema.json",
+  "relations": [
+    {"type":"goal_to_use_case","requirement":"FR-01","use_case":"UC-01"},
+    {"type":"goal_to_use_case","requirement":"FR-01","use_case":"UC-02"},
+    {"type":"goal_to_use_case","requirement":"FR-02","use_case":"UC-03"},
+    {"type":"goal_to_use_case","requirement":"FR-02","use_case":"UC-04"},
+    {"type":"goal_to_use_case","requirement":"FR-02","use_case":"UC-05"},
+    {"type":"goal_to_use_case","requirement":"FR-02","use_case":"UC-06"},
+    {"type":"goal_to_use_case","requirement":"FR-03","use_case":"UC-07"},
+    {"type":"goal_to_use_case","requirement":"FR-03","use_case":"UC-08"},
+    {"type":"goal_to_use_case","requirement":"FR-04","use_case":"UC-09"},
+    {"type":"goal_to_use_case","requirement":"FR-04","use_case":"UC-10"},
+    {"type":"requirement_to_main_flow","requirement":"FR-01-1","use_case":"UC-02","step":"MF-03"},
+    {"type":"requirement_to_main_flow","requirement":"FR-01-2","use_case":"UC-03","step":"MF-02"},
+    {"type":"requirement_to_main_flow","requirement":"FR-02-1","use_case":"UC-04","step":"MF-03"},
+    {"type":"requirement_to_main_flow","requirement":"FR-02-2","use_case":"UC-05","step":"MF-03"},
+    {"type":"requirement_to_main_flow","requirement":"FR-03-1","use_case":"UC-07","step":"MF-02"},
+    {"type":"requirement_to_main_flow","requirement":"FR-04-1","use_case":"UC-09","step":"MF-03"}
+  ]
+}

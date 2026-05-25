@@ -1,0 +1,24 @@
+{
+  "$schema": "../schema/project_info_schema.json",
+  "project_name": "BookStore",
+  "source_repository": "https://github.com/matheusforlan/BookStore",
+  "project_description": "RESTful API for bookstore management with user auth, book catalog, cart, and order features; supports ADMIN and CUSTOMER roles.",
+  "application_domain": "E-commerce (Book Retail)",
+  "project_type": "Backend REST API",
+  "programming_language": ["Java"],
+  "frameworks": ["Spring Boot", "Spring Security", "JWT"],
+  "database": ["H2 (in-memory)"],
+  "architectural_style": "Layered (Controller → Service → Repository)",
+  "target_users": ["CUSTOMER", "ADMIN"],
+  "core_features": [
+    "User registration & login (JWT)",
+    "Book CRUD (ADMIN only)",
+    "Book browsing & search",
+    "Shopping cart management",
+    "Order checkout & history"
+  ],
+  "project_version": "1.0.0",
+  "dataset_version": "v2.1",
+  "constructed_date": "2026-05-25",
+  "reverse_engineering_strategy": "Full source code analysis + README API documentation review"
+}
