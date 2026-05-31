@@ -1,0 +1,16 @@
+{
+  "actors": [
+    {"id": "a1", "name": "读者", "description": "借阅图书的人"}
+  ],
+  "use_cases": [
+    {"id": "uc1", "name": "注册", "description": "新读者创建账号"},
+    {"id": "uc2", "name": "登录", "description": "读者登录系统"},
+    {"id": "uc3", "name": "借书", "description": "读者借阅图书"}
+  ],
+  "relationships": [
+    {"id": "r1", "type": "association", "from": "a1", "to": "uc1"},
+    {"id": "r2", "type": "association", "from": "a1", "to": "uc2"},
+    {"id": "r3", "type": "association", "from": "a1", "to": "uc3"}
+  ],
+  "system_boundary": {"id": "sb1", "name": "图书借阅系统", "description": "借阅管理"}
+}

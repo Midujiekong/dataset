@@ -1,0 +1,998 @@
+{
+  "success": true,
+  "data": {
+    "diagram_metrics": {
+      "consistency_and_normativity": {
+        "label": "一致性与规范性",
+        "overall": 0.9015765765765766,
+        "attributes": {
+          "syntax_correctness": {
+            "label": "语法规范性",
+            "score": 0.972972972972973,
+            "issues": [
+              {
+                "issue_type": "syntax_error",
+                "element_id": "rel_018",
+                "element_name": "购买课程 → 支付订单",
+                "element_type": "relationship",
+                "location": "关系 rel_018",
+                "description": "【用例图·正确性】关系「购买课程 - 支付订单」（association）：语法错误 - 关联关系必须在参与者和用例之间",
+                "severity": 0.8,
+                "suggestion": "请根据UML规范修正关系类型和连接元素"
+              }
+            ]
+          },
+          "semantic_correctness": {
+            "label": "语义正确性",
+            "score": 0.6333333333333333,
+            "issues": [
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_018",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_018",
+                "description": "【用例图·正确性】关系「购买课程 - 支付订单」（association）：语义规则违反: 关联关系必须在参与者和用例之间，不能在'购买课程'(use_case)和'支付订单'(use_case)之间；根据UML 2.5规范修正关系。",
+                "severity": 0.9,
+                "suggestion": "根据UML 2.5规范修正关系",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_001",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_001",
+                "description": "【用例图·正确性】关系「学员 - 注册」（association）：参与者'学员'可能不能启动用例'注册'；确认'学员'确实需要与'注册'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'学员'确实需要与'注册'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_002",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_002",
+                "description": "【用例图·正确性】关系「学员 - 登录」（association）：参与者'学员'可能不能启动用例'登录'；确认'学员'确实需要与'登录'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'学员'确实需要与'登录'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_003",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_003",
+                "description": "【用例图·正确性】关系「学员 - 浏览课程」（association）：参与者'学员'可能不能启动用例'浏览课程'；确认'学员'确实需要与'浏览课程'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'学员'确实需要与'浏览课程'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_004",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_004",
+                "description": "【用例图·正确性】关系「学员 - 搜索课程」（association）：参与者'学员'可能不能启动用例'搜索课程'；确认'学员'确实需要与'搜索课程'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'学员'确实需要与'搜索课程'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_005",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_005",
+                "description": "【用例图·正确性】关系「学员 - 查看课程详情」（association）：参与者'学员'可能不能启动用例'查看课程详情'；确认'学员'确实需要与'查看课程详情'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'学员'确实需要与'查看课程详情'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_006",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_006",
+                "description": "【用例图·正确性】关系「学员 - 购买课程」（association）：参与者'学员'可能不能启动用例'购买课程'；确认'学员'确实需要与'购买课程'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'学员'确实需要与'购买课程'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_009",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_009",
+                "description": "【用例图·正确性】关系「购买课程 - 使用优惠券」（extend）：源用例'购买课程'可能不是一个完整的用例；确认'购买课程'可以作为一个独立的用例执行。",
+                "severity": 0.6,
+                "suggestion": "确认'购买课程'可以作为一个独立的用例执行",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_010",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_010",
+                "description": "【用例图·正确性】关系「购买课程 - 开通学习权限」（include）：目标用例'开通学习权限'可能不是源用例'购买课程'的必要部分；确认'开通学习权限'确实是'购买课程'必须包含的行为。",
+                "severity": 0.6,
+                "suggestion": "确认'开通学习权限'确实是'购买课程'必须包含的行为",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_011",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_011",
+                "description": "【用例图·正确性】关系「学员 - 观看课程」（association）：参与者'学员'可能不能启动用例'观看课程'；确认'学员'确实需要与'观看课程'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'学员'确实需要与'观看课程'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_012",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_012",
+                "description": "【用例图·正确性】关系「讲师 - 发布课程」（association）：参与者'讲师'可能不能启动用例'发布课程'；确认'讲师'确实需要与'发布课程'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'讲师'确实需要与'发布课程'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_014",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_014",
+                "description": "【用例图·正确性】关系「支付平台 - 支付订单」（association）：参与者'支付平台'可能不能启动用例'支付订单'；确认'支付平台'确实需要与'支付订单'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'支付平台'确实需要与'支付订单'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_015",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_015",
+                "description": "【用例图·正确性】关系「支付平台 - 原路退款」（association）：参与者'支付平台'可能不能启动用例'原路退款'；确认'支付平台'确实需要与'原路退款'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'支付平台'确实需要与'原路退款'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_016",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_016",
+                "description": "【用例图·正确性】关系「学员 - 申请退款」（association）：参与者'学员'可能不能启动用例'申请退款'；确认'学员'确实需要与'申请退款'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'学员'确实需要与'申请退款'交互",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_017",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_017",
+                "description": "【用例图·正确性】关系「申请退款 - 原路退款」（include）：目标用例'原路退款'可能不是源用例'申请退款'的必要部分；确认'原路退款'确实是'申请退款'必须包含的行为。",
+                "severity": 0.6,
+                "suggestion": "确认'原路退款'确实是'申请退款'必须包含的行为",
+                "llm_evaluated": false
+              },
+              {
+                "issue_type": "semantic_error",
+                "element_id": "rel_018",
+                "element_name": "",
+                "element_type": "relationship",
+                "location": "关系 rel_018",
+                "description": "【用例图·正确性】关系「购买课程 - 支付订单」（association）：参与者'购买课程'可能不能启动用例'支付订单'；确认'购买课程'确实需要与'支付订单'交互。",
+                "severity": 0.6,
+                "suggestion": "确认'购买课程'确实需要与'支付订单'交互",
+                "llm_evaluated": false
+              }
+            ]
+          },
+          "terminology_consistency": {
+            "label": "术语一致性",
+            "score": 1.0,
+            "issues": []
+          },
+          "element_unambiguity": {
+            "label": "元素无歧义性",
+            "score": 1.0,
+            "issues": []
+          }
+        },
+        "issues": [
+          {
+            "issue_type": "syntax_error",
+            "element_id": "rel_018",
+            "element_name": "购买课程 → 支付订单",
+            "element_type": "relationship",
+            "location": "关系 rel_018",
+            "description": "【用例图·正确性】关系「购买课程 - 支付订单」（association）：语法错误 - 关联关系必须在参与者和用例之间",
+            "severity": 0.8,
+            "suggestion": "请根据UML规范修正关系类型和连接元素"
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_018",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_018",
+            "description": "【用例图·正确性】关系「购买课程 - 支付订单」（association）：语义规则违反: 关联关系必须在参与者和用例之间，不能在'购买课程'(use_case)和'支付订单'(use_case)之间；根据UML 2.5规范修正关系。",
+            "severity": 0.9,
+            "suggestion": "根据UML 2.5规范修正关系",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_001",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_001",
+            "description": "【用例图·正确性】关系「学员 - 注册」（association）：参与者'学员'可能不能启动用例'注册'；确认'学员'确实需要与'注册'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'学员'确实需要与'注册'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_002",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_002",
+            "description": "【用例图·正确性】关系「学员 - 登录」（association）：参与者'学员'可能不能启动用例'登录'；确认'学员'确实需要与'登录'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'学员'确实需要与'登录'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_003",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_003",
+            "description": "【用例图·正确性】关系「学员 - 浏览课程」（association）：参与者'学员'可能不能启动用例'浏览课程'；确认'学员'确实需要与'浏览课程'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'学员'确实需要与'浏览课程'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_004",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_004",
+            "description": "【用例图·正确性】关系「学员 - 搜索课程」（association）：参与者'学员'可能不能启动用例'搜索课程'；确认'学员'确实需要与'搜索课程'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'学员'确实需要与'搜索课程'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_005",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_005",
+            "description": "【用例图·正确性】关系「学员 - 查看课程详情」（association）：参与者'学员'可能不能启动用例'查看课程详情'；确认'学员'确实需要与'查看课程详情'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'学员'确实需要与'查看课程详情'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_006",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_006",
+            "description": "【用例图·正确性】关系「学员 - 购买课程」（association）：参与者'学员'可能不能启动用例'购买课程'；确认'学员'确实需要与'购买课程'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'学员'确实需要与'购买课程'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_009",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_009",
+            "description": "【用例图·正确性】关系「购买课程 - 使用优惠券」（extend）：源用例'购买课程'可能不是一个完整的用例；确认'购买课程'可以作为一个独立的用例执行。",
+            "severity": 0.6,
+            "suggestion": "确认'购买课程'可以作为一个独立的用例执行",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_010",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_010",
+            "description": "【用例图·正确性】关系「购买课程 - 开通学习权限」（include）：目标用例'开通学习权限'可能不是源用例'购买课程'的必要部分；确认'开通学习权限'确实是'购买课程'必须包含的行为。",
+            "severity": 0.6,
+            "suggestion": "确认'开通学习权限'确实是'购买课程'必须包含的行为",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_011",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_011",
+            "description": "【用例图·正确性】关系「学员 - 观看课程」（association）：参与者'学员'可能不能启动用例'观看课程'；确认'学员'确实需要与'观看课程'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'学员'确实需要与'观看课程'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_012",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_012",
+            "description": "【用例图·正确性】关系「讲师 - 发布课程」（association）：参与者'讲师'可能不能启动用例'发布课程'；确认'讲师'确实需要与'发布课程'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'讲师'确实需要与'发布课程'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_014",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_014",
+            "description": "【用例图·正确性】关系「支付平台 - 支付订单」（association）：参与者'支付平台'可能不能启动用例'支付订单'；确认'支付平台'确实需要与'支付订单'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'支付平台'确实需要与'支付订单'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_015",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_015",
+            "description": "【用例图·正确性】关系「支付平台 - 原路退款」（association）：参与者'支付平台'可能不能启动用例'原路退款'；确认'支付平台'确实需要与'原路退款'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'支付平台'确实需要与'原路退款'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_016",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_016",
+            "description": "【用例图·正确性】关系「学员 - 申请退款」（association）：参与者'学员'可能不能启动用例'申请退款'；确认'学员'确实需要与'申请退款'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'学员'确实需要与'申请退款'交互",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_017",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_017",
+            "description": "【用例图·正确性】关系「申请退款 - 原路退款」（include）：目标用例'原路退款'可能不是源用例'申请退款'的必要部分；确认'原路退款'确实是'申请退款'必须包含的行为。",
+            "severity": 0.6,
+            "suggestion": "确认'原路退款'确实是'申请退款'必须包含的行为",
+            "llm_evaluated": false
+          },
+          {
+            "issue_type": "semantic_error",
+            "element_id": "rel_018",
+            "element_name": "",
+            "element_type": "relationship",
+            "location": "关系 rel_018",
+            "description": "【用例图·正确性】关系「购买课程 - 支付订单」（association）：参与者'购买课程'可能不能启动用例'支付订单'；确认'购买课程'确实需要与'支付订单'交互。",
+            "severity": 0.6,
+            "suggestion": "确认'购买课程'确实需要与'支付订单'交互",
+            "llm_evaluated": false
+          }
+        ]
+      },
+      "completeness": {
+        "label": "完整性",
+        "overall": 0.9097222222222222,
+        "attributes": {
+          "actor_completeness": {
+            "label": "参与者完整性",
+            "score": 1.0,
+            "issues": []
+          },
+          "use_case_completeness": {
+            "label": "用例完整性",
+            "score": 0.8888888888888888,
+            "issues": [
+              {
+                "description": "功能需求 '账号相关' 未找到匹配的用例"
+              },
+              {
+                "description": "功能需求 '讲师侧' 未找到匹配的用例"
+              }
+            ]
+          },
+          "relationship_completeness": {
+            "label": "关系完整性",
+            "score": 0.75,
+            "issues": [
+              {
+                "description": "预期关系 '支付平台 - 结算时系统需要创建订单并调用支付平台完成支付' 未在图中找到"
+              },
+              {
+                "description": "预期关系 '讲师 - 侧' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '讲师 - 发布课程' 未在图中找到"
+              },
+              {
+                "description": "预期关系 '新用户 - 能注册' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '购买课程 - 创建订单' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '购买课程 - 支付订单' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '结算时系统 - 订单并调用支付平台完成支付' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '购买课程 - 使用优惠券' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '课程发布后 - 管理员审核通过' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '申请退款 - 原路退款' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '退款 - 支付平台原路退回' 未找到匹配的元素"
+              },
+              {
+                "description": "预期关系 '退款成功后 - 回收课程学习权限' 未找到匹配的元素"
+              }
+            ]
+          },
+          "system_boundary_completeness": {
+            "label": "系统边界完整性",
+            "score": 1.0,
+            "issues": []
+          }
+        },
+        "issues": [
+          {
+            "description": "功能需求 '账号相关' 未找到匹配的用例"
+          },
+          {
+            "description": "功能需求 '讲师侧' 未找到匹配的用例"
+          },
+          {
+            "description": "预期关系 '支付平台 - 结算时系统需要创建订单并调用支付平台完成支付' 未在图中找到"
+          },
+          {
+            "description": "预期关系 '讲师 - 侧' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '讲师 - 发布课程' 未在图中找到"
+          },
+          {
+            "description": "预期关系 '新用户 - 能注册' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '购买课程 - 创建订单' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '购买课程 - 支付订单' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '结算时系统 - 订单并调用支付平台完成支付' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '购买课程 - 使用优惠券' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '课程发布后 - 管理员审核通过' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '申请退款 - 原路退款' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '退款 - 支付平台原路退回' 未找到匹配的元素"
+          },
+          {
+            "description": "预期关系 '退款成功后 - 回收课程学习权限' 未找到匹配的元素"
+          }
+        ]
+      },
+      "necessity_traceability": {
+        "label": "必要性（可追溯性）",
+        "overall": 0.8564102564102564,
+        "attributes": {
+          "use_case_redundancy": {
+            "label": "用例冗余性",
+            "score": 0.8,
+            "issues": [
+              {
+                "issue_type": "redundant_use_case",
+                "element_id": "uc_008",
+                "element_name": "支付订单",
+                "element_type": "use_case",
+                "location": "用例 uc_008",
+                "description": "【用例图·可追溯性】用例「支付订单」在当前需求抽取结果中未提及，可能为冗余功能。（基于需求抽取结果；若需求文档中实际有提及，可忽略）",
+                "severity": 0.4,
+                "suggestion": "确认该用例是否确实需要，或从需求中补充对应功能"
+              },
+              {
+                "issue_type": "redundant_use_case",
+                "element_id": "uc_009",
+                "element_name": "使用优惠券",
+                "element_type": "use_case",
+                "location": "用例 uc_009",
+                "description": "【用例图·可追溯性】用例「使用优惠券」在当前需求抽取结果中未提及，可能为冗余功能。（基于需求抽取结果；若需求文档中实际有提及，可忽略）",
+                "severity": 0.4,
+                "suggestion": "确认该用例是否确实需要，或从需求中补充对应功能"
+              },
+              {
+                "issue_type": "redundant_use_case",
+                "element_id": "uc_010",
+                "element_name": "开通学习权限",
+                "element_type": "use_case",
+                "location": "用例 uc_010",
+                "description": "【用例图·可追溯性】用例「开通学习权限」在当前需求抽取结果中未提及，可能为冗余功能。（基于需求抽取结果；若需求文档中实际有提及，可忽略）",
+                "severity": 0.4,
+                "suggestion": "确认该用例是否确实需要，或从需求中补充对应功能"
+              }
+            ]
+          },
+          "actor_redundancy": {
+            "label": "参与者冗余性",
+            "score": 1.0,
+            "issues": []
+          },
+          "relationship_redundancy": {
+            "label": "关系冗余性",
+            "score": 0.7692307692307692,
+            "issues": [
+              {
+                "issue_type": "redundant_relationship",
+                "element_id": "rel_001",
+                "element_name": "学员 → 注册",
+                "element_type": "relationship",
+                "location": "关系 rel_001",
+                "description": "【用例图·可追溯性】关系「学员 - 注册」在当前需求抽取结果中未提及，可能为冗余关系。（基于需求抽取结果；若项目中实际有需求，可忽略）",
+                "severity": 0.4,
+                "suggestion": "确认该关系是否确实需要，或从需求中补充对应关系"
+              },
+              {
+                "issue_type": "redundant_relationship",
+                "element_id": "rel_002",
+                "element_name": "学员 → 登录",
+                "element_type": "relationship",
+                "location": "关系 rel_002",
+                "description": "【用例图·可追溯性】关系「学员 - 登录」在当前需求抽取结果中未提及，可能为冗余关系。（基于需求抽取结果；若项目中实际有需求，可忽略）",
+                "severity": 0.4,
+                "suggestion": "确认该关系是否确实需要，或从需求中补充对应关系"
+              },
+              {
+                "issue_type": "redundant_relationship",
+                "element_id": "rel_016",
+                "element_name": "学员 → 申请退款",
+                "element_type": "relationship",
+                "location": "关系 rel_016",
+                "description": "【用例图·可追溯性】关系「学员 - 申请退款」在当前需求抽取结果中未提及，可能为冗余关系。（基于需求抽取结果；若项目中实际有需求，可忽略）",
+                "severity": 0.4,
+                "suggestion": "确认该关系是否确实需要，或从需求中补充对应关系"
+              }
+            ]
+          }
+        },
+        "issues": [
+          {
+            "issue_type": "redundant_use_case",
+            "element_id": "uc_008",
+            "element_name": "支付订单",
+            "element_type": "use_case",
+            "location": "用例 uc_008",
+            "description": "【用例图·可追溯性】用例「支付订单」在当前需求抽取结果中未提及，可能为冗余功能。（基于需求抽取结果；若需求文档中实际有提及，可忽略）",
+            "severity": 0.4,
+            "suggestion": "确认该用例是否确实需要，或从需求中补充对应功能"
+          },
+          {
+            "issue_type": "redundant_use_case",
+            "element_id": "uc_009",
+            "element_name": "使用优惠券",
+            "element_type": "use_case",
+            "location": "用例 uc_009",
+            "description": "【用例图·可追溯性】用例「使用优惠券」在当前需求抽取结果中未提及，可能为冗余功能。（基于需求抽取结果；若需求文档中实际有提及，可忽略）",
+            "severity": 0.4,
+            "suggestion": "确认该用例是否确实需要，或从需求中补充对应功能"
+          },
+          {
+            "issue_type": "redundant_use_case",
+            "element_id": "uc_010",
+            "element_name": "开通学习权限",
+            "element_type": "use_case",
+            "location": "用例 uc_010",
+            "description": "【用例图·可追溯性】用例「开通学习权限」在当前需求抽取结果中未提及，可能为冗余功能。（基于需求抽取结果；若需求文档中实际有提及，可忽略）",
+            "severity": 0.4,
+            "suggestion": "确认该用例是否确实需要，或从需求中补充对应功能"
+          },
+          {
+            "issue_type": "redundant_relationship",
+            "element_id": "rel_001",
+            "element_name": "学员 → 注册",
+            "element_type": "relationship",
+            "location": "关系 rel_001",
+            "description": "【用例图·可追溯性】关系「学员 - 注册」在当前需求抽取结果中未提及，可能为冗余关系。（基于需求抽取结果；若项目中实际有需求，可忽略）",
+            "severity": 0.4,
+            "suggestion": "确认该关系是否确实需要，或从需求中补充对应关系"
+          },
+          {
+            "issue_type": "redundant_relationship",
+            "element_id": "rel_002",
+            "element_name": "学员 → 登录",
+            "element_type": "relationship",
+            "location": "关系 rel_002",
+            "description": "【用例图·可追溯性】关系「学员 - 登录」在当前需求抽取结果中未提及，可能为冗余关系。（基于需求抽取结果；若项目中实际有需求，可忽略）",
+            "severity": 0.4,
+            "suggestion": "确认该关系是否确实需要，或从需求中补充对应关系"
+          },
+          {
+            "issue_type": "redundant_relationship",
+            "element_id": "rel_016",
+            "element_name": "学员 → 申请退款",
+            "element_type": "relationship",
+            "location": "关系 rel_016",
+            "description": "【用例图·可追溯性】关系「学员 - 申请退款」在当前需求抽取结果中未提及，可能为冗余关系。（基于需求抽取结果；若项目中实际有需求，可忽略）",
+            "severity": 0.4,
+            "suggestion": "确认该关系是否确实需要，或从需求中补充对应关系"
+          }
+        ]
+      },
+      "modifiability": {
+        "label": "可修改性",
+        "overall": 0.8666666666666667,
+        "attributes": {
+          "use_case_independence": {
+            "label": "用例独立性",
+            "score": 0.8666666666666667,
+            "issues": [
+              {
+                "issue_type": "dependent_use_case",
+                "element_id": "uc_006",
+                "element_name": "购买课程",
+                "element_type": "use_case",
+                "location": "用例 uc_006",
+                "description": "【用例图·可修改性】用例「购买课程」可能缺乏独立性（涉及 3 个",
+                "severity": 0.5,
+                "suggestion": "考虑将用例拆分为更小的、独立的用例，或重新设计用例边界"
+              },
+              {
+                "issue_type": "dependent_use_case",
+                "element_id": "uc_006",
+                "element_name": "购买课程",
+                "element_type": "use_case",
+                "location": "用例 uc_006",
+                "description": "【用例图·可修改性】用例「购买课程」可能缺乏独立性（涉及 3 个",
+                "severity": 0.5,
+                "suggestion": "考虑将用例拆分为更小的、独立的用例，或重新设计用例边界"
+              }
+            ]
+          }
+        },
+        "issues": [
+          {
+            "issue_type": "dependent_use_case",
+            "element_id": "uc_006",
+            "element_name": "购买课程",
+            "element_type": "use_case",
+            "location": "用例 uc_006",
+            "description": "【用例图·可修改性】用例「购买课程」可能缺乏独立性（涉及 3 个",
+            "severity": 0.5,
+            "suggestion": "考虑将用例拆分为更小的、独立的用例，或重新设计用例边界"
+          },
+          {
+            "issue_type": "dependent_use_case",
+            "element_id": "uc_006",
+            "element_name": "购买课程",
+            "element_type": "use_case",
+            "location": "用例 uc_006",
+            "description": "【用例图·可修改性】用例「购买课程」可能缺乏独立性（涉及 3 个",
+            "severity": 0.5,
+            "suggestion": "考虑将用例拆分为更小的、独立的用例，或重新设计用例边界"
+          }
+        ]
+      },
+      "overall_score": 0.887597741972742
+    },
+    "description_metrics": {
+      "consistency_and_normativity": {
+        "label": "一致性与规范性",
+        "overall": 0.8266666666666668,
+        "attributes": {
+          "syntax_correctness": {
+            "label": "语法正确性",
+            "score": 0.13333333333333333,
+            "issues": [
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「浏览课程」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「搜索课程」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「查看课程详情」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「购买课程」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「创建订单」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「支付订单」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「使用优惠券」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「开通学习权限」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「观看课程」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「发布课程」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「审核课程」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「申请退款」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              },
+              {
+                "issue_type": "missing_description",
+                "description": "【用例描述·语法正确性】用例图中的用例「原路退款」缺少对应用例描述，每个用例都应有用例描述",
+                "severity": 0.6
+              }
+            ]
+          },
+          "semantic_correctness": {
+            "label": "语义正确性",
+            "score": 1.0,
+            "issues": []
+          },
+          "terminology_consistency": {
+            "label": "术语一致性",
+            "score": 1.0,
+            "issues": []
+          },
+          "expression_unambiguity": {
+            "label": "表达无歧义性",
+            "score": 1.0,
+            "issues": []
+          },
+          "internal_logical_consistency": {
+            "label": "内部逻辑一致性",
+            "score": 1.0,
+            "issues": []
+          }
+        },
+        "issues": [
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「浏览课程」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「搜索课程」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「查看课程详情」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「购买课程」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「创建订单」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「支付订单」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「使用优惠券」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「开通学习权限」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「观看课程」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「发布课程」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「审核课程」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「申请退款」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          },
+          {
+            "issue_type": "missing_description",
+            "description": "【用例描述·语法正确性】用例图中的用例「原路退款」缺少对应用例描述，每个用例都应有用例描述",
+            "severity": 0.6
+          }
+        ]
+      },
+      "completeness": {
+        "label": "完整性",
+        "overall": 0.9166666666666666,
+        "attributes": {
+          "main_flow_completeness": {
+            "label": "主事件流完整性",
+            "score": 1.0,
+            "issues": []
+          },
+          "alternative_flow_completeness": {
+            "label": "备选流程/异常流程完整性",
+            "score": 0.75,
+            "issues": [
+              {
+                "issue_type": "completeness",
+                "description": "【用例描述·完整性】用例「验证用户凭据」未描述备选流或异常流，建议补充 alternative_flows",
+                "severity": 0.4
+              }
+            ]
+          },
+          "pre_post_condition_completeness": {
+            "label": "前置、后置条件完整性",
+            "score": 1.0,
+            "issues": []
+          }
+        },
+        "issues": [
+          {
+            "issue_type": "completeness",
+            "description": "【用例描述·完整性】用例「验证用户凭据」未描述备选流或异常流，建议补充 alternative_flows",
+            "severity": 0.4
+          }
+        ]
+      },
+      "modifiability": {
+        "label": "可修改性",
+        "overall": 1.0,
+        "attributes": {
+          "structure_clarity": {
+            "label": "结构清晰性",
+            "score": 1.0,
+            "issues": []
+          },
+          "content_redundancy": {
+            "label": "内容冗余度",
+            "score": 1.0,
+            "issues": []
+          },
+          "functional_cohesion": {
+            "label": "功能内聚性",
+            "score": 1.0,
+            "issues": []
+          }
+        },
+        "issues": []
+      },
+      "necessity_traceability": {
+        "label": "必要性（可追溯性）",
+        "overall": 0.3,
+        "attributes": {
+          "information_relevance": {
+            "label": "信息相关性",
+            "score": 0.0,
+            "issues": [
+              {
+                "description": "【用例描述·可追溯性】用例「用户登录」存在与用例目标无关的表述，请删除或移至相关用例"
+              },
+              {
+                "description": "【用例描述·可追溯性】用例「验证用户凭据」存在与用例目标无关的表述，请删除或移至相关用例"
+              }
+            ]
+          },
+          "identifier_uniqueness": {
+            "label": "标识唯一性",
+            "score": 1.0,
+            "issues": []
+          }
+        },
+        "issues": []
+      },
+      "individual_scores": [
+        {
+          "use_case_id": "uc_001",
+          "use_case_name": "用户登录"
+        },
+        {
+          "use_case_id": "uc_002",
+          "use_case_name": "验证用户凭据"
+        }
+      ],
+      "overall_score": 0.776
+    },
+    "overall_score": 0.8317988709863711,
+    "recommendations": [
+      "发现以下问题：",
+      "  1. 【用例图·正确性】关系「购买课程 - 支付订单」（association）：语义规则违反: 关联关系必须在参与者和用例之间，不能在'购买课程'(use_case)和'支付订单'(use_case)之间；根据UML 2.5规范修正关系。",
+      "  2. 【用例图·正确性】关系「购买课程 - 支付订单」（association）：语法错误 - 关联关系必须在参与者和用例之间",
+      "  3. 【用例图·正确性】关系「学员 - 注册」（association）：参与者'学员'可能不能启动用例'注册'；确认'学员'确实需要与'注册'交互。",
+      "  4. 【用例图·正确性】关系「学员 - 登录」（association）：参与者'学员'可能不能启动用例'登录'；确认'学员'确实需要与'登录'交互。",
+      "  5. 【用例图·正确性】关系「学员 - 浏览课程」（association）：参与者'学员'可能不能启动用例'浏览课程'；确认'学员'确实需要与'浏览课程'交互。",
+      "需要重点改进的维度：\n  • 用例描述·必要性（可追溯性）: 30.00%"
+    ],
+    "llm_semantic_validation": {
+      "summary": {},
+      "detailed_results": [],
+      "recommendations": []
+    },
+    "evaluation_mode": "quick",
+    "overall_score_policy": "mean",
+    "evaluation_duration_seconds": 0.009
+  }
+}

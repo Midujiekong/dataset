@@ -1,0 +1,53 @@
+[
+  {
+    "id": "uc1",
+    "name": "注册",
+    "description": "新读者创建账号",
+    "actors": ["读者"],
+    "preconditions": ["系统处于可注册状态"],
+    "postconditions": ["读者账号已创建"],
+    "main_flow": [
+      "1. 读者打开注册页面",
+      "2. 读者输入姓名和密码",
+      "3. 读者点击注册",
+      "4. 系统创建账号",
+      "5. 系统显示注册成功"
+    ],
+    "alternative_flows": [
+      {
+        "name": "用户名已存在",
+        "condition": "第4步中，用户名已被注册",
+        "return_to_step": 2,
+        "steps": ["4a. 系统提示用户名已存在", "4b. 读者重新输入"]
+      }
+    ]
+  },
+  {
+    "id": "uc2",
+    "name": "登录",
+    "description": "读者登录系统",
+    "actors": ["读者"],
+    "preconditions": ["读者已注册"],
+    "postconditions": ["读者已登录"],
+    "main_flow": [
+      "1. 读者输入用户名和密码",
+      "2. 读者点击登录",
+      "3. 系统验证凭据",
+      "4. 系统显示主页面"
+    ]
+  },
+  {
+    "id": "uc3",
+    "name": "借书",
+    "description": "读者借阅图书",
+    "actors": ["读者"],
+    "preconditions": ["读者已登录", "图书可借"],
+    "postconditions": ["读者借出图书"],
+    "main_flow": [
+      "1. 读者搜索图书",
+      "2. 读者选择要借的书",
+      "3. 读者确认借阅",
+      "4. 系统记录借阅"
+    ]
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "uc1",
+    "name": "用户注册",
+    "description": "新用户注册账号",
+    "actors": ["普通用户"],
+    "preconditions": ["系统可注册"],
+    "postconditions": ["账号已创建"],
+    "main_flow": [
+      "1. 用户打开注册页",
+      "2. 用户输入手机号",
+      "3. 用户获取验证码",
+      "4. 用户输入验证码和密码",
+      "5. 用户同意协议",
+      "6. 用户提交",
+      "7. 系统创建账号"
+    ],
+    "alternative_flows": [
+      {"name": "验证码错误", "condition": "第4步验证码错误", "return_to_step": 3, "steps": ["4a. 系统提示错误", "4b. 用户重新获取"]},
+      {"name": "手机号已注册", "condition": "第7步手机号已存在", "return_to_step": "end", "steps": ["7a. 系统提示已注册", "7b. 引导登录"]}
+    ]
+  },
+  {"id": "uc2", "name": "用户登录", "description": "用户登录系统", "actors": ["普通用户"], "preconditions": [], "postconditions": ["用户已登录"], "main_flow": ["1. 用户打开登录页", "2. 用户输入账号密码", "3. 用户提交", "4. 系统验证并登录"]},
+  {"id": "uc3", "name": "实名认证", "description": "用户实名认证", "actors": ["普通用户"], "preconditions": ["用户已登录"], "postconditions": ["认证已完成"], "main_flow": ["1. 用户进入实名认证", "2. 用户输入姓名和身份证号", "3. 用户上传证件照", "4. 系统校验并完成认证"]},
+  {"id": "uc4", "name": "开通会员", "description": "开通付费会员", "actors": ["会员用户"], "preconditions": ["用户已登录"], "postconditions": ["会员已开通"], "main_flow": ["1. 用户进入会员中心", "2. 用户选择会员套餐", "3. 用户完成支付", "4. 系统开通会员"]},
+  {"id": "uc5", "name": "会员续费", "description": "续费会员", "actors": ["会员用户"], "preconditions": ["已是会员"], "postconditions": ["会员已续费"], "main_flow": ["1. 用户进入会员中心", "2. 用户选择续费", "3. 用户完成支付", "4. 系统延长会员期"]},
+  {"id": "uc6", "name": "使用会员权益", "description": "使用会员专属权益", "actors": ["会员用户"], "preconditions": ["已是会员"], "postconditions": [], "main_flow": ["1. 用户进入权益页面", "2. 用户选择要使用的权益", "3. 系统核销权益"]},
+  {"id": "uc7", "name": "积分兑换", "description": "积分兑换商品或权益", "actors": ["会员用户"], "preconditions": ["积分充足"], "postconditions": ["兑换已完成"], "main_flow": ["1. 用户进入积分商城", "2. 用户选择兑换项", "3. 用户确认兑换", "4. 系统扣减积分并发放"]},
+  {"id": "uc8", "name": "浏览商品", "description": "浏览商品列表", "actors": ["普通用户"], "preconditions": [], "postconditions": [], "main_flow": ["1. 用户进入商品列表", "2. 系统展示商品", "3. 用户可翻页浏览"]},
+  {"id": "uc9", "name": "搜索商品", "description": "按关键词搜索", "actors": ["普通用户"], "preconditions": [], "postconditions": [], "main_flow": ["1. 用户输入关键词", "2. 用户提交搜索", "3. 系统返回搜索结果"]},
+  {"id": "uc10", "name": "查看商品详情", "description": "查看商品详情页", "actors": ["普通用户"], "preconditions": [], "postconditions": [], "main_flow": ["1. 用户点击商品", "2. 系统展示详情页", "3. 用户可查看规格、评价等"]},
+  {"id": "uc11", "name": "收藏商品", "description": "收藏商品", "actors": ["普通用户"], "preconditions": ["用户已登录"], "postconditions": ["商品已收藏"], "main_flow": ["1. 用户在详情页点击收藏", "2. 系统保存收藏"]},
+  {"id": "uc12", "name": "加入购物车", "description": "加入购物车", "actors": ["普通用户"], "preconditions": ["用户已登录"], "postconditions": ["商品已加入购物车"], "main_flow": ["1. 用户选择规格数量", "2. 用户点击加入购物车", "3. 系统加入购物车"]},
+  {"id": "uc13", "name": "修改购物车", "description": "修改数量或删除", "actors": ["普通用户"], "preconditions": ["购物车有商品"], "postconditions": [], "main_flow": ["1. 用户进入购物车", "2. 用户修改数量或删除", "3. 系统更新购物车"]},
+  {
+    "id": "uc14",
+    "name": "下单",
+    "description": "用户创建订单并支付",
+    "actors": ["普通用户", "会员用户"],
+    "preconditions": ["用户已登录", "购物车有商品"],
+    "postconditions": ["订单已创建", "支付已完成"],
+    "main_flow": [
+      "1. 用户进入购物车",
+      "2. 用户勾选要结算的商品",
+      "3. 用户确认收货地址",
+      "4. 用户选择配送方式",
+      "5. 系统创建订单",
+      "6. 用户选择支付方式",
+      "7. 用户完成支付",
+      "8. 系统确认支付成功"
+    ],
+    "alternative_flows": [
+      {"name": "使用优惠券", "condition": "第5步前用户选择优惠券", "return_to_step": 5, "steps": ["5a. 用户选择可用优惠券", "5b. 系统计算优惠后金额"]},
+      {"name": "支付失败", "condition": "第7步支付失败", "return_to_step": 6, "steps": ["7a. 系统提示失败", "7b. 用户可重试或换支付方式"]},
+      {"name": "库存不足", "condition": "第5步某商品库存不足", "return_to_step": "end", "steps": ["5a. 系统提示库存不足", "5b. 返回购物车"]}
+    ]
+  },
+  {"id": "uc15", "name": "创建订单", "description": "生成订单记录", "actors": ["普通用户"], "preconditions": ["购物车有商品"], "postconditions": ["订单已创建"], "main_flow": ["1. 系统从购物车获取商品", "2. 系统计算金额", "3. 系统生成订单号", "4. 系统保存订单"]},
+  {"id": "uc16", "name": "选择地址", "description": "选择收货地址", "actors": ["普通用户"], "preconditions": ["用户已添加地址"], "postconditions": ["地址已选定"], "main_flow": ["1. 用户进入地址选择", "2. 用户选择或新增地址", "3. 系统记录选择"]},
+  {"id": "uc17", "name": "选择支付方式", "description": "选择支付方式", "actors": ["普通用户"], "preconditions": [], "postconditions": ["支付方式已选"], "main_flow": ["1. 系统展示支付方式列表", "2. 用户选择支付方式", "3. 系统记录选择"]},
+  {"id": "uc18", "name": "支付订单", "description": "完成支付", "actors": ["普通用户"], "preconditions": ["订单已创建"], "postconditions": ["支付已完成"], "main_flow": ["1. 用户确认支付", "2. 系统调用支付接口", "3. 用户完成支付验证", "4. 系统更新订单状态"]},
+  {"id": "uc19", "name": "使用优惠券", "description": "结算时使用优惠券", "actors": ["普通用户"], "preconditions": ["有可用优惠券"], "postconditions": ["优惠已应用"], "main_flow": ["1. 用户选择优惠券", "2. 系统校验并计算优惠", "3. 系统更新应付金额"]},
+  {"id": "uc20", "name": "取消订单", "description": "取消未支付订单", "actors": ["普通用户"], "preconditions": ["订单未支付"], "postconditions": ["订单已取消"], "main_flow": ["1. 用户进入订单详情", "2. 用户点击取消", "3. 系统取消订单并释放库存"]},
+  {"id": "uc21", "name": "申请退款", "description": "申请订单退款", "actors": ["普通用户"], "preconditions": ["订单符合退款条件"], "postconditions": ["退款申请已提交"], "main_flow": ["1. 用户进入订单详情", "2. 用户选择申请退款", "3. 用户填写退款原因", "4. 系统提交退款申请"]},
+  {"id": "uc22", "name": "原路退款", "description": "退款至原支付方式", "actors": ["普通用户"], "preconditions": ["退款已审批"], "postconditions": ["退款已完成"], "main_flow": ["1. 系统调用支付机构退款", "2. 退款至原支付账户", "3. 系统更新订单状态"]},
+  {"id": "uc23", "name": "查询物流", "description": "查询物流状态", "actors": ["普通用户"], "preconditions": ["订单已发货"], "postconditions": [], "main_flow": ["1. 用户进入订单详情", "2. 用户点击查物流", "3. 系统展示物流轨迹"]},
+  {"id": "uc24", "name": "确认收货", "description": "确认收到商品", "actors": ["普通用户"], "preconditions": ["订单已发货"], "postconditions": ["订单已完成"], "main_flow": ["1. 用户进入订单详情", "2. 用户点击确认收货", "3. 系统更新订单状态并结算商家"]},
+  {"id": "uc25", "name": "评价订单", "description": "对订单进行评价", "actors": ["普通用户"], "preconditions": ["订单已完成"], "postconditions": ["评价已提交"], "main_flow": ["1. 用户进入订单详情", "2. 用户点击评价", "3. 用户填写评分和内容", "4. 系统保存评价"]},
+  {
+    "id": "uc26",
+    "name": "商家入驻",
+    "description": "商家申请入驻平台",
+    "actors": ["商家"],
+    "preconditions": ["商家有营业执照"],
+    "postconditions": ["入驻申请已提交"],
+    "main_flow": [
+      "1. 商家进入入驻页面",
+      "2. 商家选择店铺类型",
+      "3. 商家填写企业信息",
+      "4. 商家上传营业执照",
+      "5. 商家完成资质认证",
+      "6. 商家提交申请",
+      "7. 系统进入审核流程"
+    ],
+    "alternative_flows": [
+      {"name": "认证失败", "condition": "第5步认证不通过", "return_to_step": 3, "steps": ["5a. 系统提示认证失败", "5b. 商家修正信息"]}
+    ]
+  },
+  {"id": "uc27", "name": "商家认证", "description": "商家资质认证", "actors": ["商家"], "preconditions": ["商家已填写信息"], "postconditions": ["认证已完成"], "main_flow": ["1. 商家上传营业执照", "2. 商家上传法人证件", "3. 系统校验资质", "4. 系统完成认证"]},
+  {"id": "uc28", "name": "发布商品", "description": "商家发布商品", "actors": ["商家"], "preconditions": ["商家已入驻"], "postconditions": ["商品已发布"], "main_flow": ["1. 商家进入商品管理", "2. 商家点击发布商品", "3. 商家填写商品信息", "4. 商家上传图片", "5. 商家提交", "6. 系统保存并上架"]},
+  {"id": "uc29", "name": "管理库存", "description": "管理商品库存", "actors": ["商家"], "preconditions": ["商家已登录"], "postconditions": ["库存已更新"], "main_flow": ["1. 商家进入库存管理", "2. 商家选择商品", "3. 商家修改库存数量", "4. 系统更新库存"]},
+  {"id": "uc30", "name": "处理订单", "description": "商家处理订单", "actors": ["商家"], "preconditions": ["有待处理订单"], "postconditions": ["订单已处理"], "main_flow": ["1. 商家查看待处理订单", "2. 商家确认订单", "3. 商家安排发货", "4. 商家填写物流单号", "5. 系统更新订单状态"]},
+  {"id": "uc31", "name": "商家发货", "description": "商家确认发货", "actors": ["商家"], "preconditions": ["订单已支付"], "postconditions": ["订单已发货"], "main_flow": ["1. 商家打包商品", "2. 商家填写物流单号", "3. 商家确认发货", "4. 系统更新订单状态并通知用户"]},
+  {
+    "id": "uc32",
+    "name": "骑手接单",
+    "description": "骑手接配送单并完成配送",
+    "actors": ["骑手"],
+    "preconditions": ["骑手已登录", "有待接单"],
+    "postconditions": ["订单已送达"],
+    "main_flow": [
+      "1. 骑手查看待接单列表",
+      "2. 骑手选择订单接单",
+      "3. 骑手前往商家取货",
+      "4. 骑手确认取货",
+      "5. 骑手前往用户地址",
+      "6. 骑手送达并确认",
+      "7. 系统更新订单状态"
+    ],
+    "alternative_flows": [
+      {"name": "取货异常", "condition": "第4步取货异常", "return_to_step": "end", "steps": ["4a. 骑手上报异常", "4b. 系统转单或取消"]},
+      {"name": "用户不在", "condition": "第6步用户无法收货", "return_to_step": 6, "steps": ["6a. 骑手联系用户", "6b. 协商放置或改时"]}
+    ]
+  },
+  {"id": "uc33", "name": "骑手取货", "description": "骑手到店取货", "actors": ["骑手"], "preconditions": ["骑手已接单"], "postconditions": ["已取货"], "main_flow": ["1. 骑手前往商家", "2. 骑手核对订单", "3. 骑手取货", "4. 骑手确认取货完成"]},
+  {"id": "uc34", "name": "骑手送达", "description": "骑手送达用户", "actors": ["骑手"], "preconditions": ["已取货"], "postconditions": ["已送达"], "main_flow": ["1. 骑手前往用户地址", "2. 骑手联系用户", "3. 骑手交付商品", "4. 骑手确认送达"]},
+  {"id": "uc35", "name": "发布内容", "description": "创作者发布内容", "actors": ["内容创作者"], "preconditions": ["创作者已登录"], "postconditions": ["内容已发布"], "main_flow": ["1. 创作者进入发布页", "2. 创作者编辑内容", "3. 创作者上传素材", "4. 创作者提交", "5. 系统进入审核"]},
+  {"id": "uc36", "name": "内容审核", "description": "平台审核内容", "actors": ["平台运营"], "preconditions": ["有待审核内容"], "postconditions": ["审核已完成"], "main_flow": ["1. 系统推送待审核内容", "2. 审核员查看内容", "3. 审核员通过或驳回", "4. 系统通知创作者"]},
+  {"id": "uc37", "name": "创建广告计划", "description": "广告主创建计划", "actors": ["广告主"], "preconditions": ["广告主已登录"], "postconditions": ["计划已创建"], "main_flow": ["1. 广告主进入广告管理", "2. 广告主创建计划", "3. 广告主设置预算和出价", "4. 广告主设置定向", "5. 广告主提交计划"]},
+  {"id": "uc38", "name": "设置广告定向", "description": "设置投放定向", "actors": ["广告主"], "preconditions": ["计划创建中"], "postconditions": ["定向已设置"], "main_flow": ["1. 广告主选择定向维度", "2. 广告主设置地域、人群等", "3. 系统保存定向配置"]},
+  {"id": "uc39", "name": "企业认证", "description": "企业客户认证", "actors": ["企业客户"], "preconditions": ["企业已注册"], "postconditions": ["企业已认证"], "main_flow": ["1. 企业进入认证页", "2. 企业上传营业执照", "3. 企业填写企业信息", "4. 系统校验并完成认证"]},
+  {
+    "id": "uc40",
+    "name": "B2B采购",
+    "description": "企业客户采购商品",
+    "actors": ["企业客户"],
+    "preconditions": ["企业已认证", "有采购需求"],
+    "postconditions": ["采购订单已创建", "对公支付已完成"],
+    "main_flow": [
+      "1. 企业进入B2B采购",
+      "2. 企业选择商品及数量",
+      "3. 企业确认采购单",
+      "4. 系统创建采购订单",
+      "5. 企业选择对公支付",
+      "6. 企业完成对公支付",
+      "7. 系统确认收款"
+    ]
+  },
+  {"id": "uc41", "name": "对公支付", "description": "企业对公支付", "actors": ["企业客户"], "preconditions": ["企业已认证", "有待支付订单"], "postconditions": ["支付已完成"], "main_flow": ["1. 企业选择对公支付", "2. 企业填写对公账户信息", "3. 企业完成支付", "4. 系统确认收款"]},
+  {"id": "uc42", "name": "供应商入驻", "description": "供应商入驻", "actors": ["供应商"], "preconditions": ["供应商有资质"], "postconditions": ["入驻申请已提交"], "main_flow": ["1. 供应商进入入驻页", "2. 供应商填写企业信息", "3. 供应商上传资质", "4. 供应商提交申请", "5. 系统进入审核"]},
+  {"id": "uc43", "name": "供货", "description": "供应商供货", "actors": ["供应商"], "preconditions": ["供应商已入驻", "有采购订单"], "postconditions": ["供货已完成"], "main_flow": ["1. 供应商查看采购订单", "2. 供应商备货", "3. 供应商安排发货", "4. 供应商确认供货完成"]},
+  {"id": "uc44", "name": "物流揽收", "description": "承运商揽收", "actors": ["物流承运商"], "preconditions": ["有待揽收包裹"], "postconditions": ["已揽收"], "main_flow": ["1. 承运商接收揽收任务", "2. 承运商到商家取件", "3. 承运商扫描揽收", "4. 系统更新物流状态"]},
+  {"id": "uc45", "name": "物流运输", "description": "承运商运输", "actors": ["物流承运商"], "preconditions": ["包裹已揽收"], "postconditions": ["已到达目的地"], "main_flow": ["1. 承运商安排运输", "2. 包裹在途运输", "3. 承运商更新节点", "4. 包裹到达目的地"]},
+  {"id": "uc46", "name": "物流派送", "description": "承运商派送", "actors": ["物流承运商"], "preconditions": ["包裹已到达"], "postconditions": ["已派送"], "main_flow": ["1. 承运商安排派送", "2. 派送员联系收件人", "3. 派送员交付包裹", "4. 系统更新为已签收"]},
+  {"id": "uc47", "name": "支付清算", "description": "支付机构清算", "actors": ["支付机构"], "preconditions": ["有交易记录"], "postconditions": ["清算已完成"], "main_flow": ["1. 支付机构汇总交易", "2. 支付机构与平台对账", "3. 支付机构执行清算", "4. 资金划转至各方"]},
+  {"id": "uc48", "name": "异常审核", "description": "风控审核异常", "actors": ["风控专员"], "preconditions": ["有异常交易或行为"], "postconditions": ["审核已完成"], "main_flow": ["1. 系统推送异常单", "2. 风控专员查看详情", "3. 风控专员判断风险", "4. 风控专员通过或拦截", "5. 系统执行处理"]},
+  {"id": "uc49", "name": "配置活动", "description": "运营配置活动", "actors": ["平台运营"], "preconditions": ["运营已登录"], "postconditions": ["活动已配置"], "main_flow": ["1. 运营进入活动配置", "2. 运营创建活动", "3. 运营设置规则和优惠", "4. 运营设置时间", "5. 运营发布活动"]},
+  {"id": "uc50", "name": "监控报表", "description": "运营查看监控报表", "actors": ["平台运营"], "preconditions": ["运营已登录"], "postconditions": [], "main_flow": ["1. 运营进入监控中心", "2. 运营选择报表类型", "3. 运营选择时间范围", "4. 系统展示报表数据", "5. 运营可导出报表"]}
+]

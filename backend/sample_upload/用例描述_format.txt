@@ -1,0 +1,39 @@
+{
+  "metaData": {
+    "useCaseName": "<Use_Case_Name_Snake_Case>",
+    "coreGoal": "<1-2 sentence clear goal>",
+    "priority": "<High | Medium | Low>",
+    "level": "<User-goal | Sub-function>",
+    "owner": "<Team or role>"
+  },
+  "actors": {
+    "primary": ["<Primary Actor>"],
+    "secondary": ["<Secondary Actor>"]
+  },
+  "preconditions": ["<State that must hold before execution>", "<Precondition 2>"],
+  "postconditions": ["<System state after success>", "<Postcondition 2>"],
+  "mainFlow": {
+    "steps": [
+      {
+          "stepId":"<stepId>",
+          "performer":"user",
+          "action":""
+        }
+    ]
+  },
+  "alternativeFlows": [
+    {
+      "id": "<flowId>",
+      "fromStepId": <mainFlowStepId>,
+      "condition": "<What triggers this branch>",
+      "resumeStepId": <stepNumber | "end">,
+      "steps": [
+        {
+          "stepId":"<stepId>",
+          "performer":"user",
+          "action":""
+        }
+      ]
+    }
+  ]
+}

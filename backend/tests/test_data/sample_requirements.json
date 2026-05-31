@@ -1,0 +1,78 @@
+{
+    "project_name": "用户管理系统",
+    "version": "1.0.0",
+    "roles": [
+      {
+        "name": "注册用户",
+        "description": "已注册并可以登录系统的用户"
+      },
+      {
+        "name": "系统管理员",
+        "description": "负责管理系统用户和配置的管理员"
+      },
+      {
+        "name": "访客",
+        "description": "未注册或未登录的用户"
+      }
+    ],
+    "functional_requirements": [
+      {
+        "id": "FR-001",
+        "text": "用户必须能够使用用户名和密码登录系统",
+        "priority": "high",
+        "action": "登录",
+        "object": "系统"
+      },
+      {
+        "id": "FR-002",
+        "text": "系统必须验证用户的登录凭据",
+        "priority": "high",
+        "action": "验证",
+        "object": "凭据"
+      },
+      {
+        "id": "FR-003",
+        "text": "用户应该能够请求重置忘记的密码",
+        "priority": "medium",
+        "action": "重置",
+        "object": "密码"
+      },
+      {
+        "id": "FR-004",
+        "text": "系统管理员必须能够管理用户账户",
+        "priority": "medium",
+        "action": "管理",
+        "object": "用户账户"
+      },
+      {
+        "id": "FR-005",
+        "text": "VIP用户应该有特殊的登录方式",
+        "priority": "low",
+        "action": "登录",
+        "object": "系统"
+      }
+    ],
+    "expected_relationships": [
+      {
+        "role": "注册用户",
+        "function": "用户登录",
+        "type": "association"
+      },
+      {
+        "role": "系统管理员", 
+        "function": "管理用户账户",
+        "type": "association"
+      },
+      {
+        "role": "访客",
+        "function": "用户登录",
+        "type": "association"
+      }
+    ],
+    "glossary": {
+      "用户": ["注册用户", "管理员", "访客", "VIP用户"],
+      "登录": ["登入", "认证", "身份验证"],
+      "验证": ["校验", "检查", "确认"],
+      "管理": ["维护", "处理", "操作"]
+    }
+  }

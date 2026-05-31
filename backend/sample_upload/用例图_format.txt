@@ -1,0 +1,26 @@
+{
+  "actors": [
+    {
+      "id": "actor_<actor_id>",
+      "name": "<Actor Name>"
+    }
+  ],
+  "use_cases": [
+    {
+      "id": "uc_<use_case_id>",
+      "name": "<Use Case Name>"
+    }
+  ],
+  "relationships": [
+    {
+      "id": "rel_<rel_id>",
+      "type": "<association | include | extend | generalization>",
+      "from": "<actor_id | uc_id>",
+      "to": "<uc_id>"
+    }
+  ],
+  "system_boundary": {
+    "id": "sb_<boundary_id>",
+    "name": "<System Boundary Name>"
+  }
+}

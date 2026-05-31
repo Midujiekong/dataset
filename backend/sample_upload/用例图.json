@@ -1,0 +1,49 @@
+{
+  "actors": [
+    {"id": "actor_001", "name": "学员", "description": "购买课程并学习的人"},
+    {"id": "actor_002", "name": "讲师", "description": "发布课程并管理内容的人"},
+    {"id": "actor_003", "name": "管理员", "description": "审核课程并运营管理"},
+    {"id": "actor_004", "name": "支付平台", "description": "第三方支付服务"}
+  ],
+  "use_cases": [
+    {"id": "uc_001", "name": "注册", "description": "新用户创建账号"},
+    {"id": "uc_002", "name": "登录", "description": "学员使用手机号验证码或账号密码登录"},
+    {"id": "uc_003", "name": "浏览课程", "description": "查看课程列表"},
+    {"id": "uc_004", "name": "搜索课程", "description": "按关键字搜索课程"},
+    {"id": "uc_005", "name": "查看课程详情", "description": "查看课程简介、价格、讲师、目录"},
+    {"id": "uc_006", "name": "购买课程", "description": "学员结算并完成支付后获得学习权限"},
+    {"id": "uc_007", "name": "创建订单", "description": "结算时生成订单记录"},
+    {"id": "uc_008", "name": "支付订单", "description": "调用支付平台完成扣款"},
+    {"id": "uc_009", "name": "使用优惠券", "description": "在结算时抵扣金额（可选）"},
+    {"id": "uc_010", "name": "开通学习权限", "description": "支付成功后为学员开通课程访问权限"},
+    {"id": "uc_011", "name": "观看课程", "description": "观看已购买课程视频并保存进度"},
+    {"id": "uc_012", "name": "发布课程", "description": "讲师发布课程信息与视频"},
+    {"id": "uc_013", "name": "审核课程", "description": "管理员审核课程后上架"},
+    {"id": "uc_014", "name": "申请退款", "description": "满足条件时学员申请退款并回收权限"},
+    {"id": "uc_015", "name": "原路退款", "description": "调用支付平台原路退款"}
+  ],
+  "relationships": [
+    {"id": "rel_001", "type": "association", "from": "actor_001", "to": "uc_001", "description": "学员注册账号"},
+    {"id": "rel_002", "type": "association", "from": "actor_001", "to": "uc_002", "description": "学员登录系统"},
+    {"id": "rel_003", "type": "association", "from": "actor_001", "to": "uc_003", "description": "学员浏览课程"},
+    {"id": "rel_004", "type": "association", "from": "actor_001", "to": "uc_004", "description": "学员搜索课程"},
+    {"id": "rel_005", "type": "association", "from": "actor_001", "to": "uc_005", "description": "学员查看课程详情"},
+    {"id": "rel_006", "type": "association", "from": "actor_001", "to": "uc_006", "description": "学员购买课程"},
+    {"id": "rel_007", "type": "include", "from": "uc_006", "to": "uc_007", "description": "购买课程必须包含创建订单"},
+    {"id": "rel_008", "type": "include", "from": "uc_006", "to": "uc_008", "description": "购买课程必须包含支付订单"},
+    {"id": "rel_009", "type": "extend", "from": "uc_006", "to": "uc_009", "description": "当学员输入有效优惠券时，可选地抵扣金额", "extension_point": "结算页面计算应付金额时（在调用支付平台之前）"},
+    {"id": "rel_010", "type": "include", "from": "uc_006", "to": "uc_010", "description": "支付成功后必须开通学习权限"},
+    {"id": "rel_011", "type": "association", "from": "actor_001", "to": "uc_011", "description": "学员观看课程"},
+    {"id": "rel_012", "type": "association", "from": "actor_002", "to": "uc_012", "description": "讲师发布课程"},
+    {"id": "rel_013", "type": "association", "from": "actor_003", "to": "uc_013", "description": "管理员审核课程"},
+    {"id": "rel_014", "type": "association", "from": "actor_004", "to": "uc_008", "description": "支付平台处理支付"},
+    {"id": "rel_015", "type": "association", "from": "actor_004", "to": "uc_015", "description": "支付平台处理退款"},
+    {"id": "rel_016", "type": "association", "from": "actor_001", "to": "uc_014", "description": "学员申请退款"},
+    {"id": "rel_017", "type": "include", "from": "uc_014", "to": "uc_015", "description": "申请退款必须包含原路退款"}
+  ],
+  "system_boundary": {
+    "id": "sb_001",
+    "name": "线上课程平台",
+    "description": "课程浏览、购买、学习、发布与审核"
+  }
+}

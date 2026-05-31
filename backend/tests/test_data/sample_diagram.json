@@ -1,0 +1,141 @@
+{
+    "actors": [
+      {
+        "id": "actor_001",
+        "name": "注册用户",
+        "description": "已注册并登录系统的用户"
+      },
+      {
+        "id": "actor_002", 
+        "name": "系统管理员",
+        "description": "具有管理权限的用户"
+      },
+      {
+        "id": "actor_003",
+        "name": "支付网关",  
+        "description": "第三方支付服务"
+      },
+      {
+        "id": "actor_004",
+        "name": "访客",
+        "description": "未登录的用户"
+      }
+    ],
+    "use_cases": [
+      {
+        "id": "uc_001",
+        "name": "用户登录",
+        "description": "用户使用凭据登录系统"
+      },
+      {
+        "id": "uc_002",
+        "name": "验证用户凭据",
+        "description": "验证用户名和密码的正确性"
+      },
+      {
+        "id": "uc_003",
+        "name": "处理忘记密码请求",  
+        "description": "用户忘记密码时的处理流程"
+      },
+      {
+        "id": "uc_004",
+        "name": "VIP用户登录",  
+        "description": "VIP用户的特殊登录方式"
+      },
+      {
+        "id": "uc_005",
+        "name": "管理用户账户",
+        "description": "系统管理员管理用户账户"
+      },
+      {
+        "id": "uc_006",
+        "name": "系统",  
+        "description": "系统边界"
+      },
+      {
+        "id": "uc_007",
+        "name": "数据库操作",  
+        "description": "对数据库的增删改查操作"
+      }
+    ],
+    "relationships": [
+     
+      {
+        "id": "rel_001",
+        "type": "association",
+        "from": "actor_001",
+        "to": "uc_001",
+        "description": "注册用户执行登录操作"
+      },
+      {
+        "id": "rel_002",
+        "type": "include",
+        "from": "uc_001",
+        "to": "uc_002",
+        "description": "登录必须包含凭据验证"
+      },
+      {
+        "id": "rel_003",
+        "type": "extend",
+        "from": "uc_001",
+        "to": "uc_003",
+        "description": "登录可能扩展忘记密码处理",
+        "extension_point": "在登录界面用户点击“忘记密码”链接时（凭据输入/校验之前）"
+      },
+      {
+        "id": "rel_004",
+        "type": "generalization",
+        "from": "uc_004",
+        "to": "uc_001",
+        "description": "VIP用户登录是一种特殊的用户登录"
+      },
+      {
+        "id": "rel_005",
+        "type": "association",
+        "from": "actor_002",
+        "to": "uc_005",
+        "description": "管理员执行账户管理"
+      },
+      
+      {
+        "id": "rel_006",
+        "type": "association",
+        "from": "uc_001",
+        "to": "uc_005",
+        "description": "❌ 错误：用例之间不能有关联关系"
+      },
+      {
+        "id": "rel_007",
+        "type": "include",
+        "from": "actor_001",
+        "to": "uc_002",
+        "description": "❌ 错误：参与者不能是include关系的源"
+      },
+      {
+        "id": "rel_008",
+        "type": "extend",
+        "from": "actor_002",
+        "to": "uc_005",
+        "description": "❌ 错误：参与者不能是extend关系的源",
+        "extension_point": "（无效示例）扩展点随便写也不改变语法错误本质"
+      },
+      {
+        "id": "rel_009",
+        "type": "association",
+        "from": "actor_001",
+        "to": "actor_002",
+        "description": "❌ 错误：参与者之间不能有关联关系"
+      },
+      {
+        "id": "rel_010",
+        "type": "generalization",
+        "from": "actor_001",
+        "to": "uc_001",
+        "description": "❌ 错误：参与者和用例之间不能有泛化关系"
+      }
+    ],
+    "system_boundary": {
+      "name": "用户管理系统",
+      "description": "管理用户账户和认证的系统"
+    }
+  }

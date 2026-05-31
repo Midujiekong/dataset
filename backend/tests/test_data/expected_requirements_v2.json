@@ -1,0 +1,187 @@
+{
+  "project_name": "线上课程平台",
+  "version": "2.0.0",
+  "roles": [
+    {
+      "name": "学员",
+      "description": "购买课程并学习的人（有时称为用户）"
+    },
+    {
+      "name": "讲师",
+      "description": "发布课程并管理课程内容的人"
+    },
+    {
+      "name": "管理员",
+      "description": "运营人员，审核课程与处理举报"
+    },
+    {
+      "name": "支付平台",
+      "description": "第三方支付服务，用于收款与退款"
+    }
+  ],
+  "functional_requirements": [
+    {
+      "id": "FR-001",
+      "text": "新用户需要能够注册，注册后才能购买课程",
+      "priority": "high"
+    },
+    {
+      "id": "FR-002",
+      "text": "用户需要能够登录系统（手机号验证码或账号密码）",
+      "priority": "high"
+    },
+    {
+      "id": "FR-003",
+      "text": "学员能够浏览课程列表、搜索课程并查看课程详情",
+      "priority": "high"
+    },
+    {
+      "id": "FR-004",
+      "text": "学员能够购买课程，结算时系统创建订单并调用支付平台完成支付",
+      "priority": "high"
+    },
+    {
+      "id": "FR-005",
+      "text": "结算时如果学员输入有效优惠券，系统应抵扣金额；否则按原价结算",
+      "priority": "medium"
+    },
+    {
+      "id": "FR-006",
+      "text": "支付成功后系统为学员开通课程学习权限，并在我的课程中可见",
+      "priority": "high"
+    },
+    {
+      "id": "FR-007",
+      "text": "学员能够观看已购买课程视频，并自动保存观看进度以便继续播放",
+      "priority": "high"
+    },
+    {
+      "id": "FR-008",
+      "text": "讲师能够发布课程（标题、封面、简介、价格、章节目录、视频上传）",
+      "priority": "high"
+    },
+    {
+      "id": "FR-009",
+      "text": "课程发布后需要管理员审核通过才能上架展示",
+      "priority": "high"
+    },
+    {
+      "id": "FR-010",
+      "text": "学员在购买后24小时内且观看时长不超过10分钟时能够申请退款，系统调用支付平台原路退款并回收学习权限",
+      "priority": "medium"
+    }
+  ],
+  "expected_relationships": [
+    {
+      "role": "学员",
+      "function": "注册",
+      "type": "association"
+    },
+    {
+      "role": "学员",
+      "function": "登录",
+      "type": "association"
+    },
+    {
+      "role": "学员",
+      "function": "浏览课程",
+      "type": "association"
+    },
+    {
+      "role": "学员",
+      "function": "搜索课程",
+      "type": "association"
+    },
+    {
+      "role": "学员",
+      "function": "查看课程详情",
+      "type": "association"
+    },
+    {
+      "role": "学员",
+      "function": "购买课程",
+      "type": "association"
+    },
+    {
+      "role": "学员",
+      "function": "观看课程",
+      "type": "association"
+    },
+    {
+      "role": "学员",
+      "function": "申请退款",
+      "type": "association"
+    },
+    {
+      "role": "讲师",
+      "function": "发布课程",
+      "type": "association"
+    },
+    {
+      "role": "管理员",
+      "function": "审核课程",
+      "type": "association"
+    },
+    {
+      "role": "支付平台",
+      "function": "支付订单",
+      "type": "association"
+    },
+    {
+      "role": "支付平台",
+      "function": "原路退款",
+      "type": "association"
+    }
+  ],
+  "terms": [
+    {
+      "term": "学员",
+      "description": "购买课程并学习的人"
+    },
+    {
+      "term": "讲师",
+      "description": "发布课程的内容提供者"
+    },
+    {
+      "term": "管理员",
+      "description": "审核与运营管理人员"
+    },
+    {
+      "term": "课程",
+      "description": "可被浏览、购买并学习的内容集合"
+    },
+    {
+      "term": "订单",
+      "description": "结算产生的购买记录"
+    },
+    {
+      "term": "支付",
+      "description": "调用支付平台完成扣款"
+    },
+    {
+      "term": "优惠券",
+      "description": "用于结算抵扣金额的凭证（又称折扣码）"
+    },
+    {
+      "term": "退款",
+      "description": "购买后撤销交易并原路退回款项"
+    },
+    {
+      "term": "观看进度",
+      "description": "学员观看视频的时间点/时长记录"
+    }
+  ],
+  "glossary": {
+    "用户": [
+      "学员"
+    ],
+    "下单": [
+      "购买课程",
+      "创建订单"
+    ],
+    "折扣码": [
+      "优惠券"
+    ]
+  }
+}
+

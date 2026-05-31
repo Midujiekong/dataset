@@ -1,0 +1,38 @@
+{
+  "actors": [
+    {"id": "a1", "name": "买家", "description": "购买商品的用户"},
+    {"id": "a2", "name": "卖家", "description": "销售商品的商户"},
+    {"id": "a3", "name": "管理员", "description": "平台运营人员"}
+  ],
+  "use_cases": [
+    {"id": "uc1", "name": "注册", "description": "新用户创建账号"},
+    {"id": "uc2", "name": "登录", "description": "用户登录系统"},
+    {"id": "uc3", "name": "浏览商品", "description": "查看商品列表和详情"},
+    {"id": "uc4", "name": "加入购物车", "description": "将商品加入购物车"},
+    {"id": "uc5", "name": "下单结算", "description": "创建订单并支付"},
+    {"id": "uc6", "name": "创建订单", "description": "生成订单记录"},
+    {"id": "uc7", "name": "支付订单", "description": "完成支付"},
+    {"id": "uc8", "name": "发布商品", "description": "卖家发布商品信息"},
+    {"id": "uc9", "name": "管理库存", "description": "修改商品库存"},
+    {"id": "uc10", "name": "查看订单", "description": "卖家查看订单列表"},
+    {"id": "uc11", "name": "发货", "description": "卖家确认发货"},
+    {"id": "uc12", "name": "审核卖家", "description": "管理员审核卖家入驻"},
+    {"id": "uc13", "name": "处理退款", "description": "处理退款申请"}
+  ],
+  "relationships": [
+    {"id": "r1", "type": "association", "from": "a1", "to": "uc1"},
+    {"id": "r2", "type": "association", "from": "a1", "to": "uc2"},
+    {"id": "r3", "type": "association", "from": "a1", "to": "uc3"},
+    {"id": "r4", "type": "association", "from": "a1", "to": "uc4"},
+    {"id": "r5", "type": "association", "from": "a1", "to": "uc5"},
+    {"id": "r6", "type": "include", "from": "uc5", "to": "uc6", "description": "下单必须创建订单"},
+    {"id": "r7", "type": "include", "from": "uc5", "to": "uc7", "description": "下单必须支付"},
+    {"id": "r8", "type": "association", "from": "a2", "to": "uc8"},
+    {"id": "r9", "type": "association", "from": "a2", "to": "uc9"},
+    {"id": "r10", "type": "association", "from": "a2", "to": "uc10"},
+    {"id": "r11", "type": "association", "from": "a2", "to": "uc11"},
+    {"id": "r12", "type": "association", "from": "a3", "to": "uc12"},
+    {"id": "r13", "type": "association", "from": "a3", "to": "uc13"}
+  ],
+  "system_boundary": {"id": "sb1", "name": "在线商城", "description": "商品交易平台"}
+}
